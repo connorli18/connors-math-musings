@@ -1,0 +1,34 @@
+*{
+    background-color: #019875;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+body{
+    background-color: #019875;
+}
+
+.container-fluid{
+    padding-left: 100px;
+}
+
+
+.nav-style-1{
+    padding-top: 20px;
+    border-bottom: 2px solid white;
+    color: white;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+
+.home-button-nav{
+
+}
+
+.about-button-nav{
+
+}
+
+.search-bar-nav{
+
+}

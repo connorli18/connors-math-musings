@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css') }}">
+
+<div id="home" class="page row">
+        <div class="push-down"></div>
+        <div id="me"></div>
+        <div class="pull-center">
+            <h1 class="sleak"></h1>
+            <p class="sleak">
+                Here lies a vibrant collection of my thoughts and musings on various topics in the realm of mathematics, where you will journey through the fascinating landscape of numbers, theories, and mathematical curiosities that have captured my imagination over the years. 
+                Each topic is meant to be presented in an engaging and accessible manner, which hopefully will inspire your own math musings too! I hope you enjoy reading these explorations as much as I enjoyed writing them.
+            </p>
+        </div>
+</div>
+
+<script src="{{ url_for('static', filename='homepage.js') }}"></script>
+{% endblock %}
