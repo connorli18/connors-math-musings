@@ -13,22 +13,77 @@ body{
 
 
 .nav-style-1{
+    display: flex;
     padding-top: 20px;
     border-bottom: 2px solid white;
     color: white;
     padding-bottom: 20px;
     font-size: 20px;
+    justify-content: left;
+    width: 100%;
 }
 
+#link-nav-bar{
+    color: white;
+}
+
+#link-nav-bar:hover {
+    font-weight: bold;
+    text-decoration: none;
+}
 
 .home-button-nav{
-
+    padding-right: 35px;
 }
 
 .about-button-nav{
-
+    padding-right: 35px;
 }
 
-.search-bar-nav{
-
+.search-bar-nav {
+    display: flex;
+    margin-left: auto;
 }
+
+.material-icons{
+    margin-top: 0px;
+    color: white;
+    padding-right: 0px;
+}
+
+#button-search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding-right: 0px;
+}
+
+#search-form{
+    display: flex;
+}
+
+#button-search:active, #button-search:focus {
+    outline: none;
+    border: none;
+}
+
+#search-bar:active, #search-bar:focus {
+    outline: none;
+    border: 1px solid white; /* Replace 'green' with the color you want */
+}
+
+#search-bar{
+    height: 40px;
+    width: 200px;
+    border: 1px white solid;
+    border-radius: 15px; 
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+    color: white;
+}
+#search-bar::placeholder {
+    color: white; /* Replace with the color you want */
+}
+

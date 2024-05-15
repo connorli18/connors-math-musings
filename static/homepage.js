@@ -8,11 +8,12 @@ home.init = function() {
 };
 
 home.startOpeningAnimation = function() {
-
   home.walkInScene().done(function() {
-    home.wave()
+  home.wave();
+    setInterval(home.randomanimation, 7000); // Call home.randomanimation every 3 seconds
   });
 };
+
 
 home.walkInScene = function() {
 
@@ -35,7 +36,6 @@ home.walkInScene = function() {
 };
 
 home.wave = function() {
-
   setTimeout(function() {
     $me.removeClass();
     $me.addClass(states[3]);
@@ -43,15 +43,12 @@ home.wave = function() {
 
   setTimeout(function() {
     $me.removeClass();
-    $me.on('click', function() {
-      home.randomanimation();
-    });
     $me.css({
       'cursor': 'pointer'
     });
-
   }, stateduration * 8);
 };
+
 
 home.randomanimation = function() {
   var scratching = {
@@ -59,22 +56,16 @@ home.randomanimation = function() {
     stateduration: stateduration,
     repeat: 6
   };
-  var blinking = {
-    states: [states[6], states[0]],
-    stateduration: stateduration / 3,
-    repeat: 4
-  };
-  var growhair = {
-    states: [states[0], states[7], states[8], states[9]],
-    stateduration: 500,
-    repeat: 1
-  };
 
-  var listofanimations = [scratching, blinking, growhair];
+  var listofanimations = [scratching];
   setTimeout(function() {
     var random = Math.floor(Math.random() * listofanimations.length);
     var randomanimation = new Sequence(listofanimations[random].states, listofanimations[random].stateduration, listofanimations[random].repeat);
-    randomanimation.start();
+    randomanimation.start(function() {
+      // After the animation is finished, add the class for the normal state
+      $me.removeClass();
+      $me.addClass(states[0]);
+    });
   }, stateduration);
 };
 
@@ -84,10 +75,9 @@ function Sequence(sequence, frameduration, repeat) {
   this.repeat = repeat
 }
 
-Sequence.prototype.start = function() {
+Sequence.prototype.start = function(callback) {
   var that = this;
   for (var i = 0; i <= (that.repeat - 1); i++) {
-
     (function(i) {
       setTimeout(function() {
         for (var o = 0; o < that.sequence.length; o++) {
@@ -95,12 +85,15 @@ Sequence.prototype.start = function() {
             setTimeout(function() {
               $me.removeClass();
               $me.addClass(that.sequence[o]);
+              if (i === that.repeat - 1 && o === that.sequence.length - 1) {
+                // If this is the last frame of the last repeat, call the callback function
+                callback && callback();
+              }
             }, that.frameduration * o);
           }(o));
         }
       }, that.frameduration * that.sequence.length * i);
     }(i));
-
   }
 };
 
@@ -123,3 +116,16 @@ window.onload = function() {
 
     typeWriter();
 }
+
+
+document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var searchBar = document.getElementById('search-bar');
+    var searchValue = searchBar.value;
+
+    if (searchValue) {
+        window.location.href = '/search?query=' + encodeURIComponent(searchValue);
+        searchBar.value = '';
+    }
+});
