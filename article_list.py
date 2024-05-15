@@ -1,5 +1,5 @@
-articles = {
-    "FTC Notes": {
+article_list = {
+    "FTCNotes": {
         "filename": "test.txt",
         "author": "Connor Li",
         "title": "FTC Notes",
