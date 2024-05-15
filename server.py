@@ -4,6 +4,7 @@ from flask import Response, request, jsonify
 from flask import sessions
 import json
 import random
+from article_list import articles
 
 app = Flask(__name__)
 app.secret_key = 'super secret key'
