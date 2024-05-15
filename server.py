@@ -8,6 +8,10 @@ import random
 app = Flask(__name__)
 app.secret_key = 'super secret key'
 
+@app.route('/articlespec')
+def articlespec():
+    return render_template('articlespec.html')
+
 @app.route('/')
 def index():
     return render_template('homepage.html')

@@ -101,7 +101,7 @@ home.init();
 
 
 window.onload = function() {
-    var text = "Connor's Math Musings...";
+    var text = "Connor's Math Musings . . .";
     var i = 0;
     var speed = 150; // Speed of typing in milliseconds
     var sleak = document.querySelector('h1.sleak');

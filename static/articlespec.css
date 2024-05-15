@@ -1,0 +1,11 @@
+html,
+body {
+  height: 100%;
+  font-family: 'Libre Franklin', sans-serif;
+  color: white;
+}
+
+.article {
+  height: 0;
+  /* Other styles... */
+}
