@@ -1,0 +1,180 @@
+
+
+<div class='section'>Overview</div>
+<div class='subsection'>The Goal</div>
+The goal of this document is to provide a comprehensive overview of the Fundamental Theorem of Calculus from both an analytical and practical standpoint. The content of the document will hopefully tie together important proofs, concepts, and give you a nice reminder/refresher over one of the most important concepts ever introduced in higher-level mathematics.
+<div class='subsection'>Top Level</div>
+The Fundamental Theorem of Calculus is a cornerstone in mathematics, linking two principal concepts: differentiation and integration. It highlights that differentiation and integration are inverse processes of each other. This theorem underpins the ability to compute the area under a curve using antiderivatives, illustrating a deep and intrinsic connection between rates of change (differential calculus) and accumulation of quantities (integral calculus). Essentially, it provides a comprehensive framework that allows for the practical application of calculus in solving real-world problems, by demonstrating how these seemingly disparate concepts are fundamentally intertwined.
+<div class='section'>Establishing a Basis</div>
+<div class='subsection'>The Derivative</div>
+<div class='subsubsection'>Introduction</div>
+If you've taken any math class, you're probably familiar with the concept of slope. Whether you've been taught it as "rise over run" or "change in $y$ over change in $x$", the concept is the same for lines. Intuitively, it tells you how fast a line is changing at a given point. But, not every interesting graph is a line, and oftentimes the graphs that we are interested in do not have constant slope. Take this function, for example.
+\vspace{0.5cm}
+$$
+\includegraphics[width=6cm]{images/slope-0.png} \quad \quad \quad \quad \includegraphics[width=6cm]{images/slope-132.png}
+$$
+As you can clearly see, at every point, the slope of the function is changing. So, we formalize our definition of the derivative as the instantaneous rate of change of a function at a given point. Basically, if you take tangent lines (lines that touch the graph at only one point) at every point on the graph, the slope of those lines is the derivative at the respective point.
+<div class='subsubsection'>The Definition</div>
+Using the intuition provided above, we can formally define the derivative of a function at any given point. Essentially, we can pick any two points of the function and take the slope of the line connecting them. And, as we decrease the distance that separates the two points, the slope of the line connecting them will approach the slope of the tangent line at the point. So, we present the following definition.
+<div class='boxedsection'>
+<b>Definition (Derivative at a Point)</b>: Let $f(x)$ be any function. Then, we can say the derivative of $f(x)$ at any point $a$ (if it exists), which we will denote $f'(a)$, is defined by
+$$
+f'(a) = \lim_{x \rightarrow a} \frac{f(x) - f(a)}{x-a} = \lim_{h \rightarrow 0} \frac{f(a+h) - f(a)}{h}
+$$
+<u>Note</u>: These definitions are the same under the change of variables $h = x -a$. 
+</div>
+If $f'(a)$ exists and is well defined at every point in the function's domain, then we can say that there exists some function $f'(x)$ that represents the derivative at every point. This is the case for most functions that we encounter in practice, and we call this function $f'(x)$ the derivative of $f(x)$.
+<div class='boxedsection'>
+<b>Definition (Derivative of a Function):</b> A function $f(x)$ is called differentiable at $x=a$ if $f'(a)$ exists and is called differentiable on an interval if it is differentiable at every point in the interval. The function $f'(x)$ is called the derivative of $f(x)$.
+</div>
+<div class='subsection'>The Integral</div>
+<div class='subsubsection'>Introduction</div>
+The integral is a concept related to find "the area under the curve". Very generally, the concept relies on taking "boxes" of some width where the height of the boxes are defined by the function $f(x)$. If you add these boxes together, you get an approximation of the area under the curve.
+$$
+\includegraphics[width=7cm]{images/part1integral.png} \quad \quad \quad \quad
+\includegraphics[width=7cm]{images/part2integral.png}
+$$
+The method of taking these boxes is demonstrated in the pictures above. If you notice, the approximation gets better as the width of the boxes decreases. This is because the approximation gets closer to the actual area under the curve. So, we can formally define the integral as the limit of these approximations.
+<div class='subsubsection'>The Definition</div>
+The definite integral from $a$ to $b$ of a function $f(x)$ is "the area under the curve" of $f(x)$ from point $a$ to point $b$, which we denote as follows.
+$$
+\int_a^b f(x) \;dx
+$$
+In this case, the $dx$ is what we call the "term of integration," which is a notation that tells us that we are integrating with respect to $x$ (i.e. finding the area with respect to a change in $x$). Using the intuition above, we can define the definite integral as follows.
+<div class='boxedsection'>
+  <b>Definition (Definite Integral):</b> Let $f(x)$ be any function over the interval $x \in [a,b]$. If we divide $[a,b]$ into $n$ subintervals of equal width $(\Delta x)$, and pick any point over each divided interval $x_i^*$, then the definition integral is defined as follows.
+  $$
+  \int_a^b f(x) \;dx = \lim_{n\rightarrow\infty} \sum_{i=1}^n f(x_i^*) \Delta x 
+  $$
+  <u>Note</u>: In this case, we are taking $n$ of these small intervals where the width of the mini-rectangle is $\Delta x$ and the height of said rectangle is $f(x_i^*)$. Since we take $n \rightarrow \infty$, we are adding up more and more rectangles to get a better (almost perfect) approximation of the area under the curve.
+</div>
+Now, you're probably wondering about indefinite integrals. Like derivatives, we are interested in the expression $\int f(x)\;dx$ without bounds. Specifically, we want to know if it's possible to express the indefinite integral as a function of $x$. To answer this question, we must use the Fundamental Theorem of Calculus, which we will discuss in the next section.
+
+<div class='section'>Precursors to the Theorem</div>
+<div class='subsection'>Overview</div>
+To rigorously prove the Fundamental Theorem of Calculus and elucidate the deep-seated connection between the operations of integration and differentiation, it is imperative to invoke a suite of fundamental theorems. This methodology serves not only to validate the theorem itself but also to illuminate the inherent linkage between integration and differentiation, thereby providing a solid foundation for a substantial portion of calculus theory. The subsequent discussion will employ analytical techniques useful in any higher-level proofs course.
+<div class='subsection'>Intermediate Value Theorem</div>
+The Intermediate Value Theorem is another fundamental theorem in calculus that we will use to prove the Mean Value Theorem. Intuitively, the theorem states that if a function is continuous on a closed interval $[a,b]$, then the function must attain every value between $f(a)$ and $f(b)$ over the interval $[a,b]$. The proof is quite complicated, and will be left via link.
+<div class='boxedsection'>
+  <b>Theorem:</b> If $f$ is a continuous function on $[a,b]$ and $k$ is any number between $f(a)$ and $f(b)$, then there exists some $c \in (a,b)$ where $f(c) = k$.<br>
+  <br>
+  <b>Proof:</b> The proof is quite complex (and uses techniques from analysis), but a version of it is linked <a href="https://math.oxford.emory.edu/site/math111/proofs/ivt/" style="text-decoration: underline;">here</a>. 
+</div>
+<div class='subsection'>Extreme Value Theorem</div>
+The Extreme Value Theorem is a fundamental theorem in calculus that we will use to prove the Fundamental Theorem of Calculus.
+Intuitively, the theorem is quite simple. It states that if a function is continuous on a closed interval $[a,b]$, then the function must attain some maximum and minimum value over the interval $[a,b]$.
+<div class='boxedsection'>
+  <b>Theorem:</b> If $f$ is continuous function over the closed, bounded interval of $[a,b]$, then $f$ attains some maximum and minimum value over the interval $[a.b]$.<br>
+  <br>
+  <b>Proof:</b> The proof is quite complex, but a version of it is linked <a href="https://mathcenter.oxford.emory.edu/site/math111/proofs/extremeValueTheorem/" style="text-decoration: underline;">here</a>.
+</div>
+This will be used as a counterpart to prove the Mean Value Theorem, which is another important theorem that we will use to prove the Fundamental Theorem of Calculus.
+<div class='subsection'>Mean Value Theorem</div>
+The Mean Value Theorem is another important building block to the Fundamental Theorem of Calculus. It states that if a function is continuous on a closed interval $[a,b]$ and differentiable on the open interval $(a,b)$, then there exists some point $c \in (a,b)$ such that the derivative at $c$ is equal to the average rate of change of the function over the interval. More intuitively, it's saying that there exists some point whose derivative is the average rate of change.
+<div class='boxedsection'>
+<b>Theorem (Mean Value):</b> If $f$ is continuous on the closed interval $[a,b]$ and differentiable on $(a,b)$, then there is at least one point $c \in [a,b]$ such that
+$$
+f(c) = \frac{1}{b-a} \int_a^b f(x)\;dx \quad \quad \text{ or } \quad \quad f(c)(b-a) = \int_a^b f(x)\;dx
+$$
+<b>Proof:</b> Since $f(x)$ is continuous on the closed interval, we can use the extreme value theorem to show that $f(X)$ attains some maximum $M$ and minimum $m$ over that interval. This means that for all $x \in [a,b]$, we have that $m \leq f(x) \leq M$. Thus, since the integral is the area under the curve, we can construct the comparison rectangles and show the bounds
+$$
+m(b-a) \leq \int_a^b f(x)\;dx \leq M(b-a) \implies m \leq \frac{1}{b-a} \int_a^b f(x)\;dx \leq M
+$$
+Since our term $\frac{1}{b-a} \int_a^b f(x)\;dx$ is bounded and $f(x)$ is continous over the interval and assumes values $M$ and $m$, we can use the intermediate value  theorem to show that there exists some $c \in [a,b]$ such that
+$$
+f(c) = \frac{1}{b-a} \int_a^b f(x)\;dx
+$$
+This completes the proof.
+</div>
+Although this is more complicated (and requires <a href="https://mathcenter.oxford.emory.edu/site/math111/proofs/rollesTheorem/" style="text-decoration: underline;">Rolle's Theorem</a>), a corollary of this theorem above tells us the following result.
+<div class='boxedsection'>
+  <b>Corollary (Mean Value)</b>: Let $f$ be continuous over the closed interval $[a,b]$ and differentiable over the open interval $(a,b)$. Then, there exists one point $c \in (a,b)$ such that
+  $$
+  f'(c) = \frac{f(b)-f(a)}{b-a}
+  $$
+  <b>Proof:</b> The proof will be left as an exercise.
+</div>
+
+<div class='section'>The Fundamental Theorem of Calculus</div>
+<div class='subsection'>Overview</div>
+The Fundamental Theorem of Calculus ties together the integration and differentiation of functions. 
+It is composed of two parts, the first of which establishes the relationship between differentiation and integration. The second part is arguable even more important, giving us a more holistic definition of integration in terms of an anti-derivative function!
+<div class='subsection'>Part 1</div>
+Before we begin the proof, I think that it's important to mention notationally that $F(x)$ is defined as the anti-derivative of $f(x)$. In most situations, we see the definite integral as a number, but the Fundamental Theorem of Calculus allows us to see the definite integral as a function of $x$. This is because one of the bounds is some variable $x$ instead of a fixed point, which introduces the first part of the theorem.
+<div class='boxedsection'>
+<b>Theorem:</b> If $f(x)$ is continuous on an interval $[a,b]$, and the function $F(x)$ is defined as follows
+$$
+F(x) = \int_a^x f(t)\;dt
+$$
+Then, $F'(x) = f(x)$ over $[a,b]$. <br>
+<br>
+<b>Proof:</b> If we use the definition of the derivative on $F(x)$ and its definition as the integral, we have the following theorem.
+\begin{align*} 
+  F'(x) &= \lim_{h\rightarrow 0} \frac{F(x+h) - F(x)}{h}\\
+  &= \lim_{h\rightarrow 0} \frac{1}{h} \left[\int_a^{x+h} f(s)\;ds - \int_a^x f(x)\;ds \right]\\
+  &= \lim_{h\rightarrow 0} \frac{1}{h} \left[\int_a^{x+h} f(s)\;ds + \int_x^a f(x)\;ds \right]\\
+  &= \lim_{h\rightarrow 0} \underbrace{\frac{1}{h} \int_x^{x+h} f(s)\;ds}_{\Lambda}
+\end{align*}
+The term $\Lambda$ is just the average value of $f(s)$ over the interval $[x,x+h]$. This allows us to use the Mean Value Theorem from above to say that there exists some $c \in [x,x+h]$ such that $f(c) = \Lambda = \frac{1}{h} \int_x^{x+h} f(s)\;ds$.
+However, since we are taking the limit as $h \rightarrow 0$, this means that $c \rightarrow x$ since $c$ is between $x$ and $x + h$. Finally, using the property of continuity for $f(x)$, we have the following result.
+$$
+\lim_{h\rightarrow 0} \frac{1}{h} \int_x^{x+h} f(s)\;ds = \lim_{c \rightarrow x} f(c) = f(x)
+$$
+This completes the proof that $F'(x) = f(x)$ over $[a,b]$.
+</div>
+If you couldn't tell from the name, the Fundamental Theorem of Calculus has a lot of implications. It not only proves the relationship between derivation and integration, but it also proves that every integrable function has an anti-derivative function, as as a corrollary, that any continuous function has a well-defined anti-derivative.
+<div class='subsection'>Part 2</div>
+The second part of the Fundamental Theorem of Calculus is also known as the evaluation theorem. The general intuition behind the formula is that the definite integral of a function $f(x)$ is equal to the anti-derivative evaluated at only endpoints of the interval. In a more general sense, it eliminates the need to keep taking smaller boxes since we can find the area under the curve by evaluating the anti-derivative function.
+<div class='boxedsection'>
+  <b>Theorem:</b> If $f(x)$ is continuous on an interval $[a,b]$ and $F(x)$ is the antiderivative of $f(x)$, then
+$$
+  \int_a^b f(x)\;dx = \eval{F(x)}_a^b = F(b) - F(a)
+$$
+<b>Proof:</b> Let's first divide $[a,b]$ into $n$ continuous segments of equal length and label the endpoints of each segment $x_i$ where $i = 0,\;1,\;\dots,\;n$. This means that our interval $[a,b]$ now looks like
+$$
+[a,b] = [x_0,x_1] \cup [x_1,x_2] \cup \dots \cup [x_{n-1},x_n]
+$$
+This means that we can rewrite the expression $F(b) - F(a)$ as follows.
+\begin{align*}
+F(b) - F(a) &= F(x_n) - F(x_0)\\
+&=  \left[F(x_n) - F(x_{n-1})\right] + \left[F(x_{n-1}) - F(x_{n-2})\right] + \dots + \left[F(x_1) - F(x_0)\right]\\
+&= \sum_{i=1}^n \left[F(x_i) - F(x_{i-1})\right]
+\end{align*}
+Now, we can use the Mean Value Theorem (corollary) for every interval $[x_{i-1}, x_i]$ to say that there exists some $c_i \in (x_{i-1},x_i)$ such that
+$$
+F'(c) = \frac{F(x_i) - F(x_{i-1})}{x_i - x_{i-1}} \implies F(x_i) - F(x_{i-1}) = F'(c_i)(x_i - x_{i-1}) = f(c_i)(x_i - x_{i-1}) = f(c_i)\Delta x
+$$
+And, as we take the limit as $n \rightarrow \infty$ for our original expression, we have
+$$
+F(b) - F(a) = \lim_{n\rightarrow \infty} \sum_{i=1}^n f(c_i) \Delta x = \int_a^b f(x)\;dx 
+$$
+</div>
+<div class='subsection'>Part 3</div>
+If you aren't interested in Calculus III/IV concepts, please skip this section. But if you are, the Fundamental Theorem of Calculus has an extension to integrals along curves (path integrals). 
+<div class='boxedsection'>
+  <b>Theorem:</b> If $f(z)$ has a continuous indefninite integral $F(z)$ in a region $R$ with the parameterized curve $\gamma: z = z(t)$ for all $t \in [a,b]$, then
+  $$
+  \int_\gamma f(z)\;dz = F(z(b)) - F(z(a))
+  $$
+  <b>Proof:</b> The proof is quite complex, and I don't think it's very valuable to look at. However, the intuition remains the same, that the integral of a function along a curve is equal to the anti-derivative evaluated at the endpoints of the curve.
+</div>
+
+<div class='subsection'>Example Problems</div>
+<div class='subsubsection'>FTC Part 1</div>
+<b>Problem (1):</b> Find the derivative of the following function.
+$$
+g(x) = \int_1^x \frac{1}{t^3 + 1}\;dt
+$$
+<b>Problem (2):</b> Find the derivative of the following function.
+$$
+g(x) = \int_x^{x^2} t^3 \;dt
+$$
+<div class='subsubsection'>FTC Part 2</div>
+<b>Problem (1):</b> Evaluate the following definite integral.
+$$
+\int_{-2}^2 \frac{t^3}{3} - 4 \;dt 
+$$
+<b>Problem (2):</b> Evaluate the following definite integral.
+$$
+\int_{1}^9 \frac{x-1}{\sqrt{x}}\;dx
+$$

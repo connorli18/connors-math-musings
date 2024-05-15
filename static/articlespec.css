@@ -6,8 +6,14 @@ body {
 }
 
 .article {
-  padding-bottom: 300px;
+  padding-bottom: 0px;
   /* Other styles... */
+}
+
+.article-1 {
+  margin-top: 50px;
+  border-bottom: 1px solid white;
+  padding-bottom: 40px;
 }
 
 .title-article{
@@ -23,16 +29,21 @@ body {
   font-size: 30px;
   font-weight: bold;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .subsection{
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .subsubsection{
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .author-article{
@@ -97,4 +108,104 @@ body {
 .articles-header{
   padding-bottom: 65px;
   border-bottom: 1px solid white;
+}
+
+.boxedsection{
+  margin-top: 20px;
+  border: 1px solid white;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.article a {
+  color: white;
+  text-decoration: none;
+}
+
+.article a :hover {
+  font-weight: bold;
+}
+
+/* Socials */
+
+.socials{
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.socials ul {
+  position: relative; /* Change from 'absolute' to 'relative' */
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.socials ul li {
+  list-style: none;
+}
+
+.socials ul li a {
+  position: relative;
+  width:60px;
+  height:60px;
+  display:block;
+  text-align:center;
+  margin:0 10px;
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: border-box;
+  text-decoration:none;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  background: linear-gradient(0deg, #ddd, #fff);
+  transition: .5s;
+}
+
+.socials ul li a:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  text-decoration:none;
+}
+
+.socials ul li a .fab, ul li a .fas, ul li a .far {
+  width: 100%;
+  height:100%;
+  display:block;
+  background: linear-gradient(0deg, #fff, #ddd);
+  border-radius: 50%;
+  line-height: calc(60px - 12px);
+  font-size:24px;
+  color: #262626;
+  transition: .5s;
+}
+
+.socials ul li:nth-child(1) a:hover .fab,
+.socials ul li:nth-child(1) a:hover .fas,
+.socials ul li:nth-child(1) a:hover .far {
+  color: #3b5998;
+}
+
+.socials ul li:nth-child(2) a:hover .fab,
+.socials ul li:nth-child(2) a:hover .fas,
+.socials ul li:nth-child(2) a:hover .far {
+  color: #00aced;
+}
+
+.socials ul li:nth-child(3) a:hover .fab,
+.socials ul li:nth-child(3) a:hover .fas,
+.socials ul li:nth-child(3) a:hover .far {
+  color: #dd4b39;
+}
+
+.socials ul li:nth-child(4) a:hover .fab,
+.socials ul li:nth-child(4) a:hover .fas,
+.socials ul li:nth-child(4) a:hover .far {
+  color: #007bb6;
+}
+
+.socials ul li:nth-child(5) a:hover .fab,
+.socials ul li:nth-child(5) a:hover .fas,
+.socials ul li:nth-child(5) a:hover .far {
+  color: #e4405f;
 }
