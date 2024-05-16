@@ -15,6 +15,7 @@
     {% for item in result %}
         <div class="result-item">
             <div class="title"><a id="link-nav-bar" href="{{ url_for('articlespec', article=item.key) }}">{{ item.title }}</a></div>
+            <div class="dashed-line"></div>
             <div class="author">{{ item.author }}</div>
         </div>
     {% endfor %}

@@ -1,13 +1,10 @@
 from flask import Flask
 from flask import render_template 
-from flask import Response, request, jsonify
-from flask import sessions
+from flask import request, jsonify
 from flask import abort
-import json
-import random
 from article_list import math_article_list, cs_article_list
-import os
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 app.secret_key = 'super secret key'
@@ -39,7 +36,8 @@ def articlespec(article):
     if filename is None:
         abort(404)  
 
-    full_path = os.path.join('latex_converter', filename)
+    #full_path = '/home/connorli18/mathmusings/latex_converter/' + filename
+    full_path = 'latex_converter/' + filename
     with open(full_path, 'r') as file:
         article_content = file.read()
     return render_template('articlespec.html', content=article_content, title=title, author=author, date=formatted_date)
@@ -59,7 +57,8 @@ def search():
 
     # Search in math_article_list
     for key, article in math_article_list.items():
-        full_path = os.path.join('latex_converter', article['filename'].split('.txt')[0] + '.tex')
+        #full_path = '/home/connorli18/mathmusings/latex_converter/' + article['filename'].split('.txt')[0] + '.tex'
+        full_path = 'latex_converter/' + article['filename'].split('.txt')[0] + '.tex'
         with open(full_path, 'r') as file:
             content = file.read()
         if query in content or query in article['title'] or query in article['author']:
@@ -67,7 +66,8 @@ def search():
 
     # Search in cs_article_list
     for key, article in cs_article_list.items():
-        full_path = os.path.join('latex_converter', article['filename'].split('.txt')[0] + '.tex')
+        #full_path = '/home/connorli18/mathmusings/latex_converter/' + article['filename'].split('.txt')[0] + '.tex'
+        full_path = 'latex_converter/' + article['filename'].split('.txt')[0] + '.tex'
         with open(full_path, 'r') as file:
             content = file.read()
         if query in content or query in article['title'] or query in article['author']:

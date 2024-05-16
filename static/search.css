@@ -54,3 +54,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.dashed-line {
+  flex-grow: 1;
+  border-bottom: 1px dashed black;
+  margin: 0 10px; /* Adjust spacing as needed */
+}
