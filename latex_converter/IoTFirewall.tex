@@ -1,11 +1,10 @@
 
 
-\subsubsection{Relevant Resources}
+\section{Relevant Resources}
 \begin{itemize}
     \item \textbf{Relevant Lab:} Internet Real-Time Lab (IRT), Columbia University Department of Computer Science
     \item \textbf{Research Advisors:} Luoyao Hao, Henning Schulzrinne
     \item \textbf{Author Emails:} csl2192@columbia.edu, hk3187@columbia.edu
-    \item \textbf{GitHub Repositories:} \href{https://github.com/Halleloya/IoTFirewall/tree/mud}{\underline{MUD-Based Solution}} and \href{https://github.com/Halleloya/IoTFirewall/tree/fall_2023}{\underline{Packet Rate \& Size Monitoring Solutions}}    
 \end{itemize}
 
 
@@ -18,8 +17,6 @@ In response to the rising tide of cyber threats, global spending on cybersecurit
 $$
 \includegraphics[width=12cm]{SPENDING2025.png}
 $$
-Figure 1. Global cybersecurity spending per year. 
-\\ \\
 Keeping pace with this dramatic increase in cybercrime is the rapid expansion of internet connectivity, with around one million new users going online each day. By 2023, the number of networked devices globally is predicted to triple the human population, presenting an unprecedented expansion in potential vulnerabilities. Furthermore, by 2022, the planet will host 1 trillion networked sensors, escalating to 45 trillion within a matter of two decades. This is also matched by exponential growth in IP traffic, which soared to an annual run rate of 2.3 zettabytes in 2020 from 870.3 exabytes in 2015. \\
 \\
 Given the vast expansion of networked devices, there is a pressing need for innovative network protection strategies that can adapt to and secure an increasingly complex and vulnerable digital landscape. 
@@ -54,231 +51,39 @@ In traditional network switches, the hardware's functionality limits the data pl
 $$
 \includegraphics[width=12cm]{standard_and_p4-defined_switches.png}
 $$
-Figure 2. Top-down approach of P4 programming.\\
-\\
 In most papers, you will see P4 described as adopting a "top-down" approach for network device programming. Specifically, we see that P4 programs define the desired network functionalities at a high level. These programs are then compiled and injected into the network device, requiring the hardware to support programmability. This method contrasts with the traditional "bottom-up" approach where the capabilities are defined by the hardware's fixed functions, limiting flexibility.
 $$
 \includegraphics[width=9cm]{bottom-up.png}
 $$
-Figure 3. Bottom-up approach \\
-\\
 For a more comprehensive understanding of the P4 programming language and to access hands-on tutorials, please visit the dedicated GitHub repository. This site offers a wealth of resources, including step-by-step guides, example projects, and community support, which were invaluable for our understanding of P4. Explore these resources by following the link provided \href{https://github.com/p4lang/tutorials}{here}.
 \subsection{Introduction to P4Runtime}
 It is crucial to distinguish between P4 Runtime and the P4 language, as they serve different but complementary purposes. As mentioned above, the P4 language is primarily used to define the processing behavior of packets within a switch, detailing the operations performed on packet fields and the sequence of these operations. However, P4 Runtime is an API that facilitates the actual control of these devices once their behavior has been defined using the P4 language. \\
 $$
 \includegraphics[width=12cm]{p4runtime.png}
 $$
-Figure 4. P4 runtime for remote control plane\\ 
-\\
 With its development, P4 Runtime marked a groundbreaking new approach to managing the forwarding planes of network devices such as switches, routers, and firewalls. This protocol is unique because it allows control over any type of forwarding plane. The architecture of P4 Runtime is consistent across different device types, supporting a broad range of customizable protocols and features with the ability to manage a diverse array of network devices effectively (a plus for scalability of network systems). \\
 \\
 Historically, network devices were managed through proprietary APIs that were fixed and closed. These APIs were designed specifically for certain chipsets and did not accommodate the dynamic addition of new features or protocols. Moreover, non-disclosure agreements and licensing constraints prevented these APIs from being shared or used to manage devices from different manufacturers. This limitation hindered innovation and flexibility in network management. P4 Runtime addresses these issues by providing a standardized and open API that evolves dynamically as new features are introduced to the network device, without requiring a restart or reboot of the control plane.\\
 \\
 P4 Runtime's flexibility stems from its integration with the P4 programming language. Network developers can define device behavior using P4, and then use P4 Runtime to manage these behaviors dynamically. For instance, a developer might specify an IPv4 longest-prefix-match (LPM) table within a P4 program. The P4 compiler then automatically generates a schema based on this specification, which P4 Runtime uses to manage the table entries at runtime. This capability is not restricted to predefined functions; developers can extend or modify the P4 program to introduce new functionalities, like IPv6 prefix tables or custom rules for network traffic.
-
-%Heeyun's Section
 \subsection{P4 Switch Architecture}
 Each endpoints are connected by P4's virtual switches that receives and forwards the packets according to the programmed match-action table. Once a switch receives a packet from its input ports, it extracts the fields from the header which describes the permitted sequences of headers within received packets, how to identify those header sequences, and the headers and fields to extract from packets.\\
 \\
 In detail, to forward a packet in IPv4 forwarding, each switch will (i) update the source and destination MAC addresses, (ii) decrement the time-to-live (TTL) in the IP header, and (iii) forward the packet out the appropriate port. Each switch will maintain a match-action table which is updated by the control plane with some static rules. Each rule will map an IP address or other parts of header to the MAC address and output port for the next hop. When a rule matches a packet, its action such as forwarding or dropping is invoked with parameters supplied by the control plane as part of the rule. This rule can also be dynamically updated by P4 Runtime from the control plane. \\
 \\
-As shown in the diagram below, the design of virtual switches can be broken down into input channel, parser, ingress match-action, buffer, egress match-action, and output channel. 
-\\
+As shown in the diagram below, the design of virtual switches can be broken down into input channel, parser, ingress match-action, buffer, egress match-action, and output channel.
 $$
 \includegraphics[width=12cm]{switch_arch.png}
 $$
-Figure 5. Design of virtual switches\\
-\\
 \subsection{P4 Runtime API}
- P4 is a language for programming the data plane of network devices. However, it lacks the flexibility of dynamically updating the match action table during the runtime. The P4Runtime API is a control plane specification for controlling the data plane elements in python which allows the developers to write controller applications for P4 devices or switches. \\
- \\
- The figure below shows the pipeline of how Runtime API plays a role in P4 runtime. Once P4 program is written with the basic topology of the network and basic match-action behavior, it gets compiled with P4 compiler. The compiled information is used to create data plane runtime simulation including the table and extern objects in data plane. Then, Runtime API is used to construct control plane scripts that dynamically updates the tables in the data plane.
+P4 is a language for programming the data plane of network devices. However, it lacks the flexibility of dynamically updating the match action table during the runtime. The P4Runtime API is a control plane specification for controlling the data plane elements in python which allows the developers to write controller applications for P4 devices or switches. \\
+\\
+The figure below shows the pipeline of how Runtime API plays a role in P4 runtime. Once P4 program is written with the basic topology of the network and basic match-action behavior, it gets compiled with P4 compiler. The compiled information is used to create data plane runtime simulation including the table and extern objects in data plane. Then, Runtime API is used to construct control plane scripts that dynamically updates the tables in the data plane.
 $$
 \includegraphics[width=12cm]{p4_runtime.png}
 $$
-Figure 6. P4 Runtime workflow diagram\\
-\\
 
-
-\pagebreak
-%Heeyun's Section%
-\section{MUD Based Solution for IoT Firewall Rules}
-\subsection{Overview of Project}
-The solution presented in this section is to create a static whitelist-based firewall for Internet of Things based on Manufacturer Usage Description (MUD), dropping any unintended communication to the device. By creating the firewall rules prior to the setup of IoT, this solution prevents any possibility of forgery from the setup time. Since this solution is a static approach with respect to a MUD file, the rule should be updated as a new MUD rules are released for the most up-to-date security. 
-
-\subsubsection{Manufacturer Usage Description (MUD)}
-Manufacturer Usage Description or MUD is an embedded software standard file for IoT vendors to advertise their device specifications on intended communication patterns, including allowed URL and IP addresses. MUD is typically in a JSON format. Below is an excerpt from a MUD file of Amazon Echo:
-\begin{lstlisting}
-    ietf-access-control-list:access-lists": {
-        "acl": [
-            {
-                "name": "from-ipv4-amazonecho",
-                "type": "ipv4-acl-type",
-                "aces": {
-                    "ace": [
-                        {
-                        "name": "from-ipv4-amazonecho-0",
-                        "matches": {
-                        "ipv4": {
-                        "protocol": 6,
-                        "ietf-acldns:dst-dnsname": "dcape-na.amazon.com"
-                        },
-                    "tcp": {
-                        "destination-port": {
-                            "operator": "eq",
-                            "port": 443
-                        },
-                        "ietf-mud:direction-initiated": "from-device"
-                    }
-                },
-                "actions": {
-                    "forwarding": "accept"
-                }
-            },
-\end{lstlisting}
-In this example, we can see that Amazon Echo is allowing a outbound connection to "dcape-na.amazon.com" from the device. \\
-\\
-MUD is an authoritative identifier and enforcer of policy for devices on the network as MUD is officially approved by IETF (Internet Engineering Task Force) as an Internet standard. 
-
-\subsubsection{Threat Model}
-Note that IoT is typically composed of the Thing - IoT device itself - and the Hub - a central controller that connects to multiple Things and to the outer internet to the Vendor.
-Since all of the communication of IoT goes through its Hub, we simplify the system of IoT into a single endpoint. The threat model that this project is targeting is described below. \\
-\\
-\textbf{Attackers}: Possible attackers include motivated hackers that gather private information of the victim, by taking control of the device and sending sensitive information back to the hacker. Possible attackers also include joy hackers who enjoys exploiting other assets.  \\
-\textbf{Attackers' Ability}: Attackers may send malicious connections or request to the Thing, planting worm or virus. These malware can take a full control of the device and connect to any place on the internet. For the purpose of this project which focuses on network layer, we assume all \textit{intended} communications are encrypted in application level so that attackers cannot eavesdrop or perform MitM on the channel between Things to Vendor. \\
-\textbf{Resources to protect}: Data collected by IoT \\ 
-
-\subsection{Network Topology}
- For this project, there are one switch s1 that is connected to four hosts, h1, h2, h3 and h4. Below is the JSON configuration of the virtual hosts, including their IP addresses and MAC addresses.
-\begin{lstlisting}
-    {
-        "h1": {
-            "dst_eth_addr": "08:00:00:00:01:11",
-            "dst_ip_addr": "10.0.1.1",
-            "port": 1
-        },
-        "h2": {
-            "dst_eth_addr": "08:00:00:00:02:22",
-            "dst_ip_addr": "10.0.2.2",
-            "port": 2
-        },
-        "h3": {
-            "dst_eth_addr": "08:00:00:00:03:33",
-            "dst_ip_addr": "10.0.3.3",
-            "port": 3
-        },
-        "h4": {
-            "dst_eth_addr": "08:00:00:00:04:44",
-            "dst_ip_addr": "10.0.4.4",
-            "port": 4
-        }
-    }
-\end{lstlisting}
-This is a visual representation of the JSON configuration above:
-\\
-$$\includegraphics[width=9cm]{mud_topology.png}\\$$
-\\
-Figure 7. Network topology diagram. Blue rectangles represent the hosts and the orange circle represents the switch.\\
-\\
-Here, h1 represents the IoT system, h2 simulates a trusted endpoint, h3 simulates an unsafe endpoint, and h4 simulates a DNS server. All of them are connected through a switch s1, which is a simplified representation of internet topology. As s1 is the switch adjacent to h1, it also acts as a firewall to h1. 
-
-\subsection{Solution}
-
-The focus of the firewall based on the treat model is to protect the data collected by IoT from hackers, so it is essential to monitor outbound traffic from the IoT. Thus, we assume that malicious ingress traffics do not do a significant damage if all malicious egress traffics are blocked. Here, the task of the project narrows down to blocking any egress traffic to an IP address or to an URL that is not listed on MUD file. \\
-\\
-The flowchart of the solution is drawn below. When an IoT device requests a connection to a URL, it goes through the switch, which will send a DNS request if it is unknown in its forwarding table. However, if that URL is malicious and not listed in MUD file, the DNS request is dropped in the switch, and the connection will never reach to the malicious endpoint. If the URL is whitelisted by MUD file, the switch will resolve the DNS request, and the connection are successfully made to the trusted endpoint. Similarly for a connection that directly connects to an IP address, if it is not listed in MUD file, the switch drops the packet. If that IP address is whitelisted by MUD file, the switch will perform the next hop, delivering the packet to the trusted endpoint.
-
-\includegraphics[width=13cm]{solution_flowchart.png}\\
-Figure 8. Flowchart of the firewall. Green arrow represents safe network traffic, and the orange arrow represents unsafe network traffic.
-\\
-\subsubsection{Implementation}
-The MUD file is parsed into Pandas DataFrame in \verb |processMUD.py|, then the whitelisted URL and IP addresses is extracted and stored in a python list. This is then directed to \verb|controller.py|, which uses P4 runtime API to update the forwarding table in the data plane. \\ 
-\\
-The code excerpt from \verb|controller_dns.py| below is the code segment that controls dropping DNS request of URL not whitelisted in MUD file. If it is whitelisted, it continues with the DNS request by calling \verb|handleDNSRequest()|.
-\begin{lstlisting}
-    # initialize list of allowed DNS names using MUD file
-    mud_allowed_egress, mud_allowed_ingress = processMUD.parse_mud("./mud_files/mud_test.json")
-    ...
-
-    # If the url requested is not whitelisted in MUD file, drop
-    if dns_str not in mud_allowed_egress:
-        print(f"{dns_str} not whitelisted by the MUD file - dropping")
-        continue
-    handleDNSRequest(...)
-\end{lstlisting}
-Similarly for IP address whitelist, if an IP address that the IoT is connecting is listed in MUD, it forwards to the next switch. If not, it asks for the user input if the user wants to approve the connection. If the user approves, the table rules are updated. \\
-\\
-Below, a code excerpt from \verb|p4controller_utils.py| is shown. This function \verb|handleNonDNSPacketIn()| is called when the switch receives a packet, and it is not a DNS request. Thus, it is provided with the destination IP address, and this is where the MUD whitelist filters out the connections. 
-
-\begin{lstlisting}
-def handleNonDNSPacketIn(pkt, src_ip, dst_ip,\\
-    ip_add_dict, p4info_helper, curr_sw, mud_allowed_ip_list):
-
-    # if IP address is white listed by MUD file:
-    if dst_ip in mud_allowed_ip_list:
-        print(f"packet to {dst_ip} whitelisted by MUD file")
-        approved = True
-    else: 
-        user_input = input(f'Approve packet from {src_ip} to {dst_ip}? y/n \n')
-        approved = True if user_input.lower() == 'y' else False
-    if approved:
-        if dst_ip in ip_add_dict:
-            params = ip_add_dict[dst_ip]
-
-            writeTableRules(p4info_helper, ingress_sw=curr_sw, **params)
-
-            # forward packet with packetOut
-            packet_out = p4info_helper.buildPacketOut(
-                    payload = pkt.build(),
-                    metadata = {
-                        1: ip_add_dict[dst_ip]['port'].to_bytes(16, 'big')
-                    })
-            curr_sw.PacketOut(packet_out)
-
-\end{lstlisting}
-\subsection{Testing}
-In order to recreate the solution, follow these steps:
-
-\begin{enumerate}
-    \item Clone the project from the github:  \\
-    \verb|git clone git@github.com:Halleloya/IoTFirewall.git| \\
-    \\
-    Switch branch to \verb|mud|:\\
-     \verb|git checkout mud|
-
-     \item Ensure that \verb|config.json| corresponds to the config file for mininet topology. (IP range 10.0.0.0/16)
-    \item At the home directory, run \verb|make mininet|.
-    \item 
-    Launch device terminals with \verb|xterm h1 h2 h3 h4| on the mininet command line.
-    \item  In a separate terminal, run \verb|python3 controller_dns.py|. Observe the printed whitelisted URL and IP addresses.
-    \item On the terminal of h4, run \verb|sudo python3 receive_dns.py|.
-    \item On the terminal of h2 and h3, run sudo \verb|python3 receive.py eth0|.
-    \item On the terminal of h1, run \verb|sudo python3 send.py eth0 10.0.2.2 hi|. Observe that the communication was made to h2 since 10.0.2.2 was whitelisted.
-    \item
-    On the terminal of h1, run \verb|sudo python3 send_dns.py 10.0.4.4 www.trusted.com|. Observe that the DNS Request is forwarded to h4, and the response is sent back to h1 from the controller's terminal print statements.
-    \item Verify that the DNS request was successfully made by running \verb|sudo python3 receive.py| on h2 and \\\verb|sudo python3 send.py eth0 10.0.2.2 hi| on h1. h2 should be able to receive the packet from h1.
-    \item
-    On the terminal of h1, run \verb|sudo python3 send_dns.py 10.0.4.4 www.unsafe.com|. Observe that the DNS Request is dropped in the logs of \verb|controller_dns.py|.
-    \item
-    After the \verb|MAX_DNS_TIME|, verify that a new DNS request will be dropped by running \\ \verb|sudo python3 send_dns.py 10.0.4.4 www.safe.com| on h1. This time, the DNS request is not forwarded to h4.
-    
-\end{enumerate}
-
-\subsection{Discussion}
-This firewall rule that blocks unlisted URL and IP address successfully prevents any suspicious connection to unknown hosts. Recall the threat model in section 3.1.2. While the attackers can plant a worm or virus that records and sends private information stored in IoT, the attackers will not able to get the sensitive information as the firewall will block a connection to unknown host. However, this has some short comings that comes with not filtering ingress traffics. 
-
-\subsubsection{Unintended connection to a whitelisted host}
- Even though egress traffic to an unknown host is blocked, there are still a way that the attacker can get an outbound communication from the IoT. Assume an attacker was successful in penetrating into an IoT system. If the forged IoT sends sensitive information unencrypted to a whitelisted host, the attacker can  eavesdrop on the unencrypted channel and access the information from IoT. Note that this firewall is implemented in network level. Thus, the firewall will not be able to filter out the communication based on the contents in the application level - including checking if the communication is encrypted. 
- \subsubsection{Cannot protect the IoT itself}
- The design of the threat model only considered the information stored in IoT. However, it is important to consider IoT as an asset as well. If the penetrated malware destroys the device, stopping the IoT to carry out its pivotal function, the user may need to replace the device or perform digital forensic to fix the device. The firewall must prevent 
- these malware injection to prevent such loses. 
-
-\subsection{Future work}
-With such shortcomings, it is important to prevent the malware to penetrate the system in the first place. Thus, the next step would be to create a firewall rule for ingress traffic.
-
-
-\pagebreak
-\section{Packet Rate \& Size Monitoring Solution for IoT Firewall Rules}
+\section{Packet Rate & Size Monitoring Solution for IoT Firewall Rules}
 \subsection{Overview of Project}
 The solution implemented within this section is designed to provide robust security measures directly at the switch level, effectively preventing malicious packet transmissions to targeted host IP addresses in a variety of scenarios. Specifically, this project is engineered in order to tailor to three core blocking functionalities, each used to intercept different types of network threats:
 \begin{itemize}
@@ -321,7 +126,7 @@ $$
 \includegraphics[width=10cm]{pod-topo.png}
 $$
 \subsubsection{Testing: Starting the Mininet}
-Start on a clean-state Linux machine, and navigate to the Virtual Machine. For more instructions on installing the virtual machine, please see the \href{https://github.com/p4lang/tutorials?tab=readme-ov-file#obtaining-required-software}{\underline{P4 Tutorials Repository}}. Once you are in the Virtual machine,
+Start on a clean-state Linux machine, and navigate to the Virtual Machine. For more instructions on installing the virtual machine, please see the \href{https://github.com/p4lang/tutorials?tab=readme-ov-file#obtaining-required-software}{P4 Tutorials Repository}. Once you are in the Virtual machine,
 \begin{enumerate}
     \item Enter the p$4$ user profile and open the terminal. Navigate to the tutorials $\rightarrow$ IoTFirewall folder, and \verb|make clean|.
     \item Next, use \verb|make| to create the mininet.
@@ -340,6 +145,7 @@ In the controller terminal, it should show that \verb|h1| is sending packets. On
 Our current network leverages P4-based IPv4 forwarding, which routes packets based on destination IP addresses. To bolster security, our project requires the implementation of advanced IP blocking strategies: blocking traffic to and from specific destination and source IPs. This necessitates sophisticated modifications to the P4 match-action tables, enabling precise filtering of both incoming and outgoing packets based on IP criteria. 
 \subsubsection{Dropping by Destination IP}
 To implement destination IP-based blocking, we introduced modifications to the \verb|utils/p4runtime_lib/|\verb|switch.py| file, adding specialized functions that enable dynamic updates to the forwarding rules in the P4 Runtime's behavioral model (bmv2). One critical function, \verb|DeleteTableEntry|, is designed to remove existing table entries that dictate packet forwarding behaviors, replacing them with rules that instead drop packets to specific IP addresses:
+
 \begin{lstlisting}
     def DeleteTableEntry(self, table_entry, dry_run=False):
         request = p4runtime_pb2.WriteRequest()
@@ -507,7 +313,7 @@ To show how this functionality works, let's assume that you've set up the minine
 \end{enumerate}
 \subsection{Packet Rate Firewall}
 \subsubsection{Implementation Notes}
-The core of our packet-rate monitor is built around P4's native counters, which function analogously to arrays in general-purpose programming languages. For more information on counters, please visit this site \href{https://cornell-pl.github.io/cs6114/lecture07.html}{\underline{here}}. \\
+The core of our packet-rate monitor is built around P4's native counters, which function analogously to arrays in general-purpose programming languages. For more information on counters, please visit this site \href{https://cornell-pl.github.io/cs6114/lecture07.html}{here}. \\
 \\
 In this implementation, we first introduce a counter, \verb|h_counter|, within the Ingress control block of the switch's P4 program. This counter is tasked with tracking both the packet and byte counts based on unique identifiers derived from IP addresses.
 \begin{lstlisting}
@@ -616,7 +422,7 @@ These future directions are designed to not only enhance the robustness and effi
 \begin{itemize}
     \item Morgan, S. (2013, November 13). Cybercrime To Cost The World \$10.5 Trillion Annually By 2025. Cybercrime Magazine. https://cybersecurityventures.com/hackerpocalypse-cybercrime-report-2016/
     \item Parol, P. (2020, April 22). P4 network programming language - what is it all about?. CodiLime. https://codilime.com/blog/p4-network-programming-language-what-is-it-all-about/
-    \item Data Tech, A. (2022, January 27). What you should know about P4 programming language \& P4 Programmable Switch. Medium. 
+    \item Data Tech, A. (2022, January 27). What you should know about P4 programming language & P4 Programmable Switch. Medium. 
     https://medium.com/@Asterfusion/what-you-should-know-about-p4-programming-language-p4-programmable-switch-da4be7d271af
     \item McKeown, N. (2021, July 22). P4 runtime - putting the control plane in charge of the forwarding plane. Open Networking Foundation. https://opennetworking.org/news-and-events/blog/p4-runtime-putting-the-control-plane-in-charge-of-the-forwarding-plane/
     \item Cisco (2024) What Is MUD. https://developer.cisco.com/docs/mud/what-is-mud/#what-is-mud

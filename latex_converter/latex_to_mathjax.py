@@ -1,8 +1,23 @@
 import re
 import argparse
+import html
 
-def converter(line, align, moneys):
+def converter(line, align, moneys, code):
+    line_copy = line
     changed_line = line.strip()
+
+    if '\\begin{lst' in changed_line:
+        code = True
+        changed_line = '<div class="center-it"><code class="lstlisting" style="text-decoration: none !important; color: white !important;">'
+        return changed_line, align, moneys, code
+    
+    if '\\end{lstlisting' in changed_line:
+        code = False
+        changed_line = '</code></div>'
+        return changed_line, align, moneys, code
+
+    if code:
+        changed_line = html.escape(line_copy).replace(' ', '&nbsp;').replace('\n', '<br>')
 
     if '\\nequiv' in changed_line:
         changed_line = changed_line.replace('\\nequiv', '\\cancel{\\equiv}')
@@ -23,8 +38,8 @@ def converter(line, align, moneys):
         moneys = not moneys
 
     if moneys or align:
-        return changed_line, align, moneys
-    
+        return changed_line, align, moneys, code
+            
     #remove pagebreaks
     changed_line = changed_line.replace("\\pagebreak", "")
 
@@ -59,6 +74,10 @@ def converter(line, align, moneys):
     if not align and not moneys:
         changed_line = changed_line.replace("\\\\", "<br>")
 
+    if "\\verb|" in changed_line:
+        verb_pattern = r"\\verb\|(.*?)\|"
+        changed_line = re.sub(verb_pattern, r'<code style="color: white !important; text-decoration: none !important;">\1</code>', changed_line)
+
     if "\\end{document" in changed_line:
         changed_line = ''
 
@@ -80,17 +99,27 @@ def converter(line, align, moneys):
     if "\\item" in changed_line:
         changed_line = changed_line.replace("\\item", "<li>")
 
-    return changed_line, align, moneys
+    if "\\begin{enumerate" in changed_line:
+        changed_line = '<ol class="enumerate">'
+
+    if "\\end{enumerate" in changed_line:
+        changed_line = '</ol>'
+
+    if "\\item" in changed_line:
+        changed_line = changed_line.replace("\\item", "<li>")
+
+    return changed_line, align, moneys, code
     
 
 def read_tex_file(file_path):
     output_file_path = f"{file_path.split('.tex')[0]}.txt"
     with open(file_path, 'r') as file, open(output_file_path, 'w') as output_file:
         align = False
+        code = False
         moneys = False
         for line in file:
             print(line)
-            changed_line, align, moneys = converter(line, align, moneys)
+            changed_line, align, moneys, code = converter(line, align, moneys, code)
             output_file.write(changed_line)
 
 if __name__ == "__main__":
