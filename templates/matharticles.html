@@ -4,6 +4,14 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='matharticles.css') }}">
 
 <div class="temp-error">
-    This Math Articles Page is still in development. Go home in the meantime :)
+    <img src="https://media2.giphy.com/media/2vmkF2Vl0PxK29efWH/giphy.gif?cid=6c09b9529izzjzdv81wykbgdwj0ogyw8elpvz052c54ow50s&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s" alt="Loading..." width="300">
 </div>
+
+<div class="listofart"></div>
+
+
+<script type="text/javascript">
+    var articles = {{ articles | tojson | safe }};
+</script>
+<script src="{{ url_for('static', filename='matharticles.js') }}"></script>
 {% endblock %}

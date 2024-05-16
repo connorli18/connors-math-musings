@@ -5,7 +5,7 @@ from flask import sessions
 from flask import abort
 import json
 import random
-from article_list import math_article_list
+from article_list import math_article_list, cs_article_list
 import os
 from datetime import datetime
 
@@ -15,15 +15,26 @@ app.secret_key = 'super secret key'
 @app.route('/articlespec/<article>')
 def articlespec(article):
     # Assuming article_list is a dictionary with article names as keys and filenames as values
-    if article not in math_article_list:
+    if article not in math_article_list and article not in cs_article_list:
         abort(404)
-    filename = math_article_list[article]['filename']
-    title = math_article_list[article]['title']
-    author = math_article_list[article]['author']
 
-    publish_date = math_article_list[article]['publish-date']
-    date = datetime.strptime(publish_date, '%Y-%m-%d')
-    formatted_date = date.strftime('%B %Y')
+    if article in math_article_list:
+        filename = math_article_list[article]['filename']
+        title = math_article_list[article]['title']
+        author = math_article_list[article]['author']
+
+        publish_date = math_article_list[article]['publish-date']
+        date = datetime.strptime(publish_date, '%Y-%m-%d')
+        formatted_date = date.strftime('%B %Y')
+    
+    elif article in cs_article_list:
+        filename = cs_article_list[article]['filename']
+        title = cs_article_list[article]['title']
+        author = cs_article_list[article]['author']
+
+        publish_date = cs_article_list[article]['publish-date']
+        date = datetime.strptime(publish_date, '%Y-%m-%d')
+        formatted_date = date.strftime('%B %Y')
 
     if filename is None:
         abort(404)  # If the article is not found in the list, return a 404 error
@@ -49,17 +60,11 @@ def search():
 
 @app.route('/matharticles')
 def matharticles():
-    rec1 = "values"
-    rec2 = "values"
-    rec3 = "values"
-    return render_template('matharticles.html', rec1=rec1, rec2=rec2, rec3=rec3)
+    return render_template('matharticles.html', articles=math_article_list)
 
 @app.route('/csarticles')
 def csarticles():
-    rec1 = "values"
-    rec2 = "values"
-    rec3 = "values"
-    return render_template('csarticles.html', rec1=rec1, rec2=rec2, rec3=rec3)
+    return render_template('csarticles.html', articles=cs_article_list)
 
 @app.route('/about')
 def about():

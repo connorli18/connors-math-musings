@@ -1,9 +1,19 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='csarticles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='matharticles.css') }}">
 
 <div class="temp-error">
-    This CS Articles Page is still in development. Go home in the meantime :)
+    <img src="https://i.pinimg.com/originals/57/18/5d/57185d2176d7cbaebdb74c00ce1b9ebf.gif" alt="Loading...">
 </div>
+
+
+
+<div class="listofart"></div>
+
+
+<script type="text/javascript">
+    var articles = {{ articles | tojson | safe }};
+</script>
+<script src="{{ url_for('static', filename='matharticles.js') }}"></script>
 {% endblock %}

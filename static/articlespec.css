@@ -77,13 +77,34 @@ body {
 .table-of-contents {
   margin-top: 20px;
   width: fit-content;
-  padding: 10px;
+  padding: 20px;
   border: 1px solid white;
   font-size: 15px;
   list-style-type: none;
 }
 
+.center-it{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.lst-listings{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-decoration: none;
+  color: white;
+}
+
 .itemize{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+.enumerate{
   padding-top: 20px;
   padding-bottom: 20px;
 }

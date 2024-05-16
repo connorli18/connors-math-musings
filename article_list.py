@@ -24,3 +24,12 @@ math_article_list = {
         "publish-date": "2024-02-07"
     }
 }
+
+cs_article_list = {
+    "IoTFirewall": {
+        "filename": "IoTFirewall.txt",
+        "author": "Connor Li, Heeyun Kim",
+        "title": "IoT Firewall Research Report",
+        "publish-date": "2024-05-13"
+    }
+}
