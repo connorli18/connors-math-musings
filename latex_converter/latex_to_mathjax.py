@@ -4,6 +4,9 @@ import argparse
 def converter(line, align, moneys):
     changed_line = line.strip()
 
+    if '\\nequiv' in changed_line:
+        changed_line = changed_line.replace('\\nequiv', '\\cancel{\\equiv}')
+
     if "\\begin{boxedsection" in changed_line:
         changed_line = changed_line.replace("\\begin{boxedsection}", "<div class='boxedsection'>")
 

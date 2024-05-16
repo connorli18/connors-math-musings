@@ -9,7 +9,6 @@ The Fundamental Theorem of Calculus is a cornerstone in mathematics, linking two
 <div class='subsection'>The Derivative</div>
 <div class='subsubsection'>Introduction</div>
 If you've taken any math class, you're probably familiar with the concept of slope. Whether you've been taught it as "rise over run" or "change in $y$ over change in $x$", the concept is the same for lines. Intuitively, it tells you how fast a line is changing at a given point. But, not every interesting graph is a line, and oftentimes the graphs that we are interested in do not have constant slope. Take this function, for example.
-\vspace{0.5cm}
 <div style="display: flex; justify-content: center;">
   <img id="gif-loop" src="https://ds055uzetaobb.cloudfront.net/image_optimizer/f1aad8cb82a3d4acf67f2fc6523d8fe10677b478.gif" width="300" style="margin: 20px">
 </div>
