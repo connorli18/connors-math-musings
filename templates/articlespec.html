@@ -20,9 +20,9 @@
 
 <div class="article">
     <div class="articles-header">
-        <div class="title-article">The Fundamental Theorem of Calculus</div>
-        <div class="author-article">Connor Li</div>
-        <div class="date-article">March 2024</div>
+        <div class="title-article">The {{ title }}</div>
+        <div class="author-article">{{ author }}</div>
+        <div class="date-article">{{ date }}</div>
     </div>
 
     <div class="tocheader">
@@ -47,5 +47,14 @@
     </ul>
 </div>
 
+
+<script>
+  setInterval(function() {
+    var gifImage = document.getElementById('gif-loop');
+    var imageUrl = gifImage.src;
+    gifImage.src = "";
+    gifImage.src = imageUrl;
+  }, 3800);
+</script>
 <script src="{{ url_for('static', filename='articlespec.js') }}"></script>
 {% endblock %}

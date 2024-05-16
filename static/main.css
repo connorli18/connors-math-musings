@@ -11,6 +11,9 @@ body{
     padding-left: 100px;
 }
 
+.article-button-nav{
+    padding-right: 35px;
+}
 
 .nav-style-1{
     display: flex;

@@ -70,6 +70,10 @@ body {
   padding-bottom: 50px;
 }
 
+#gif-loop {
+  border: 5px solid rgb(0, 0, 0);
+}
+
 .table-of-contents {
   margin-top: 20px;
   width: fit-content;
@@ -77,6 +81,11 @@ body {
   border: 1px solid white;
   font-size: 15px;
   list-style-type: none;
+}
+
+.itemize{
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .table-of-contents li {
