@@ -37,8 +37,8 @@ def articlespec(article):
         formatted_date = date.strftime('%B %Y')
 
     if filename is None:
-        abort(404)  # If the article is not found in the list, return a 404 error
-    # Join the filename with the directory path
+        abort(404)  
+
     full_path = os.path.join('latex_converter', filename)
     with open(full_path, 'r') as file:
         article_content = file.read()
@@ -56,6 +56,23 @@ def home():
 def search():
     query = request.args.get('query', '')  # Get the 'query' parameter from the request
     result = []
+
+    # Search in math_article_list
+    for key, article in math_article_list.items():
+        full_path = os.path.join('latex_converter', article['filename'].split('.txt')[0] + '.tex')
+        with open(full_path, 'r') as file:
+            content = file.read()
+        if query in content or query in article['title'] or query in article['author']:
+            result.append({'key': key, 'title': article['title'], 'author': article['author']})
+
+    # Search in cs_article_list
+    for key, article in cs_article_list.items():
+        full_path = os.path.join('latex_converter', article['filename'].split('.txt')[0] + '.tex')
+        with open(full_path, 'r') as file:
+            content = file.read()
+        if query in content or query in article['title'] or query in article['author']:
+            result.append({'key': key, 'title': article['title'], 'author': article['author']})
+
     return render_template('search.html', query=query, result=result)
 
 @app.route('/matharticles')

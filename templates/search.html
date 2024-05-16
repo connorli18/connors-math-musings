@@ -3,7 +3,23 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search.css') }}">
 
-<div class="temp-error">
-    This Search Page is still in development. Go home in the meantime :)
+<div class="search-result-title">
+    {% if result|length == 0 %}
+        No search results for "{{ query }}"
+    {% else %}
+        {{ result|length }} search results for "{{ query }}"
+    {% endif %}
 </div>
+
+<div class="results">
+    {% for item in result %}
+        <div class="result-item">
+            <div class="title"><a id="link-nav-bar" href="{{ url_for('articlespec', article=item.key) }}">{{ item.title }}</a></div>
+            <div class="author">{{ item.author }}</div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
 {% endblock %}
