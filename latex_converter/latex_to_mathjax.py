@@ -2,7 +2,7 @@ import re
 import argparse
 
 def converter(line, align, moneys):
-    changed_line = line
+    changed_line = line.strip()
 
     if "\\begin{boxedsection" in changed_line:
         changed_line = changed_line.replace("\\begin{boxedsection}", "<div class='boxedsection'>")
@@ -68,14 +68,21 @@ def converter(line, align, moneys):
         
         changed_line = re.sub(r'\\href\{(.*?)\}\{(.*?)\}', replace_href, changed_line)
 
+    if "\\begin{itemize" in changed_line:
+        changed_line = '<div class="itemize"><ul>'
+
+    if "\\end{itemize" in changed_line:
+        changed_line = '</ul></div>'
+
+    if "\\item" in changed_line:
+        changed_line = changed_line.replace("\\item", "<li>")
+
     return changed_line, align, moneys
     
 
 def read_tex_file(file_path):
     output_file_path = f"{file_path.split('.tex')[0]}.txt"
     with open(file_path, 'r') as file, open(output_file_path, 'w') as output_file:
-        textbf = False
-        textit = False
         align = False
         moneys = False
         for line in file:

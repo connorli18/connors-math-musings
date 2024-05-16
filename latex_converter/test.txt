@@ -10,9 +10,9 @@ The Fundamental Theorem of Calculus is a cornerstone in mathematics, linking two
 <div class='subsubsection'>Introduction</div>
 If you've taken any math class, you're probably familiar with the concept of slope. Whether you've been taught it as "rise over run" or "change in $y$ over change in $x$", the concept is the same for lines. Intuitively, it tells you how fast a line is changing at a given point. But, not every interesting graph is a line, and oftentimes the graphs that we are interested in do not have constant slope. Take this function, for example.
 \vspace{0.5cm}
-$$
-\includegraphics[width=6cm]{images/slope-0.png} \quad \quad \quad \quad \includegraphics[width=6cm]{images/slope-132.png}
-$$
+<div style="display: flex; justify-content: center;">
+  <img id="gif-loop" src="https://ds055uzetaobb.cloudfront.net/image_optimizer/f1aad8cb82a3d4acf67f2fc6523d8fe10677b478.gif" width="300" style="margin: 20px">
+</div>
 As you can clearly see, at every point, the slope of the function is changing. So, we formalize our definition of the derivative as the instantaneous rate of change of a function at a given point. Basically, if you take tangent lines (lines that touch the graph at only one point) at every point on the graph, the slope of those lines is the derivative at the respective point.
 <div class='subsubsection'>The Definition</div>
 Using the intuition provided above, we can formally define the derivative of a function at any given point. Essentially, we can pick any two points of the function and take the slope of the line connecting them. And, as we decrease the distance that separates the two points, the slope of the line connecting them will approach the slope of the tangent line at the point. So, we present the following definition.
@@ -30,10 +30,9 @@ If $f'(a)$ exists and is well defined at every point in the function's domain, t
 <div class='subsection'>The Integral</div>
 <div class='subsubsection'>Introduction</div>
 The integral is a concept related to find "the area under the curve". Very generally, the concept relies on taking "boxes" of some width where the height of the boxes are defined by the function $f(x)$. If you add these boxes together, you get an approximation of the area under the curve.
-$$
-\includegraphics[width=7cm]{images/part1integral.png} \quad \quad \quad \quad
-\includegraphics[width=7cm]{images/part2integral.png}
-$$
+<div style="display: flex; justify-content: center;">
+  <img id="gif-loop" src="https://media.tenor.com/hfc9PFo-ZwQAAAAM/graph-calculus.gif" width="300" style="margin: 20px">
+</div>
 The method of taking these boxes is demonstrated in the pictures above. If you notice, the approximation gets better as the width of the boxes decreases. This is because the approximation gets closer to the actual area under the curve. So, we can formally define the integral as the limit of these approximations.
 <div class='subsubsection'>The Definition</div>
 The definite integral from $a$ to $b$ of a function $f(x)$ is "the area under the curve" of $f(x)$ from point $a$ to point $b$, which we denote as follows.
@@ -128,7 +127,7 @@ The second part of the Fundamental Theorem of Calculus is also known as the eval
 <div class='boxedsection'>
   <b>Theorem:</b> If $f(x)$ is continuous on an interval $[a,b]$ and $F(x)$ is the antiderivative of $f(x)$, then
 $$
-  \int_a^b f(x)\;dx = \eval{F(x)}_a^b = F(b) - F(a)
+  \int_a^b f(x)\;dx = F(x) \Big|_a^b = F(b) - F(a)
 $$
 <b>Proof:</b> Let's first divide $[a,b]$ into $n$ continuous segments of equal length and label the endpoints of each segment $x_i$ where $i = 0,\;1,\;\dots,\;n$. This means that our interval $[a,b]$ now looks like
 $$
@@ -178,3 +177,4 @@ $$
 $$
 \int_{1}^9 \frac{x-1}{\sqrt{x}}\;dx
 $$
+
