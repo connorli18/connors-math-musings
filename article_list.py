@@ -28,6 +28,18 @@ math_article_list = {
         "author": "Connor Li",
         "title": "Different Types of Infinity",
         "publish-date": "2024-04-20"
+    },
+    "fibseq": {
+        "filename": "fibseq.txt",
+        "author": "Connor Li",
+        "title": "Modified Fibonacci Sequence: Generating Functions",
+        "publish-date": "2024-02-15"
+    },
+    "kfreenums": {
+        "filename": "kfreenums.txt",
+        "author": "Connor Li",
+        "title": "K-Free Numbers: A Combinatorial Approach",
+        "publish-date": "2024-02-28"
     }
 }
 

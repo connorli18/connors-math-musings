@@ -1,0 +1,55 @@
+
+\section{Counting $K$-Free Numbers}
+\subsection{Problem Statement}
+Let $k \geq 2$ where $k \in \mathbb{Z}$, and say that positive integer $n$ is $k$-free if it is not divisible by any $k$-th power (thus, $2$-free numbers are squarefree numbers). Show that the number of $k$-free numbers less than or equal to $x$ is 
+$$
+\frac{1}{\zeta(k)} \cdot x + \mathcal{O}\left(x^{\frac{1}{k}}\right) 
+$$
+where $\zeta(k)$ is the Riemann zeta function. Assume, without proof, that
+$$
+\frac{1}{\zeta(s)} = \sum_{n=1}^\infty \frac{\mu(n)}{n^s} = \prod_{\rho} \left(1 - \frac{1}{\rho^s}\right) \quad  \text{and} \quad  \sum_{d^k \mid n} \mu(d) = \begin{cases} 1 & n \text{ is }k\text{-free}\\ 0 &\text{otherwise} \end{cases}
+$$
+\subsection{A Formal Proof}
+Using properties we learned from class, define the following sifting function $s(n)$ such that
+$$
+s(n) = \sum_{d^k | n} \mu(d) = \begin{cases}
+1 & n \text{ is } k\text{-free}\\
+0 & \text{otherwise}
+\end{cases}
+$$
+This sifting function $s(n)$ is what we will use to define $\kappa(x) = \frac{x}{\zeta(k)} + \mathcal{O}\left(x^{\frac{1}{k}}\right)$, the density function of $k$-th free numbers less than $x$. Now, another way to rewrite this using our expression using $s(n)$ is the following.
+$$
+\kappa(x) = \sum_{n \leq x} s(n)
+$$
+If the number $n$ is $k$-free, then $s(n)$ evalutes to $1$, and we are able to find out the number of integers that are $k$-free up to $x$. Plugging in our expression for $s(n)$, we know that
+\begin{align*}
+\kappa(x) &= \sum_{n \leq x} s(n) \\
+&= \sum_{n \leq x} \sum_{d^k | n} \mu(d)
+\end{align*}
+If we make the change of variables $m = x^{\frac{1}{k}}$, we now have the following expression.
+\begin{align*}
+    \sum_{n \leq x} \sum_{d^k | n} \mu(d) &= \sum_{d \leq m} \mu (d)\sum_{\substack{n \leq x \\ d^k | n}} 1
+\end{align*}
+The reason why you are able to switch the terms of summation is because the expression is still logically the same. Since we are interested in $d^k | n$ and $n \leq x$, we know that $d \leq x^{\frac{1}{k}}$. And since $\mu(d)$ is the ``determining function'' for whether or the term is included (based on whether or not it divides $n$), then we are still counting over all $d$, like in the original expression.\\
+\\
+Now, since we also know that the inner-sum is equal to the number of multiples of $d^k$ up to $x$ (i.e. $d^k,\;2d^k,\;3d^k,\;\dots)$, we know that this is equal to $x$ divided by $d^k$ (and floored to an integer) for some fixed $d$.
+\begin{align*}
+    \sum_{d \leq m} \mu (d)\sum_{\substack{n \leq x \\ d^k | n}} 1 &= \sum_{d \leq m} \mu (d) \left\lfloor \frac{x}{d^k} \right\rfloor\\
+    &= \sum_{d \leq m} \mu(d) \left\lfloor \frac{x}{d^k} \right\rfloor + \left(\sum_{d \leq m} \mu(d)\frac{x}{d^k} -  \sum_{d \leq m} \mu(d)\frac{x}{d^k} \right)\\
+ &= \sum_{d \leq m} \mu(d)\frac{x}{d^k} + \sum_{d \leq m} \mu(d)\left(\left\lfloor \frac{x}{d^k} \right\rfloor - \frac{x}{d^k}\right)
+\end{align*}
+Since we know that the different between $\lfloor a\rfloor$ and $a$ can be at most $1$, we can conclude that the summation is finite since $\mu(d) \leq 1$. Thus, we can bound the rightmost term by $O(m)$, from a notation that we learned in class.
+$$
+\sum_{d \leq m} \mu(d)\frac{x}{d^k} + \sum_{d \leq m} \mu(d)\left(\left\lfloor \frac{x}{d^k} \right\rfloor - \frac{x}{d^k}\right) = x\sum_{d \leq m} \frac{\mu(d)}{d^k} + O(m)
+$$
+Finally, use the first assumption in the problem to show that
+\begin{align*}
+    \frac{1}{\zeta(k)} = \prod_p \left(1-\frac{1}{p^k}\right) = \sum_{d=1}^\infty \frac{\mu(d)}{d^k} &\implies \prod_p \left(1-\frac{1}{p^k}\right) = \sum_{d \leq m} \frac{\mu(d)}{d^k} + \sum_{d > m} \frac{\mu(d)}{d^k}\\
+    &\implies  \sum_{d \leq m} \frac{\mu(d)}{d^k} = \prod_p \left(1-\frac{1}{p^k}\right) - \sum_{d > m} \frac{\mu(d)}{d^k} 
+\end{align*}
+Finally, we can substitute this expression back into our original expression for $k$ to get the following result. However, notice that $\mu(d)$ is equal to $0$ over the summation where $d > m$, so it evaluates to $0$ and we get our desired expression.
+\begin{align*}
+    \kappa(x) = x\sum_{d \leq m} \frac{\mu(d)}{d^k} + O(m) &= x\left(\prod_p \left(1-\frac{1}{p^k}\right) - \sum_{d > m} \frac{\mu(d)}{d^k} \right) + O(m)\\
+    &= x \prod_p \left(1-\frac{1}{p^k}\right) + O(m)\\
+    &= x\frac{1}{\zeta(k)} + O\left(x^{\frac{1}{k}}\right)
+\end{align*}

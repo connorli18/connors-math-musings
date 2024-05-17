@@ -50,6 +50,10 @@ def index():
 def home():
     return render_template('homepage.html')
 
+@app.route('/google1f75ecfbbecd84e2.html')
+def google():
+    return render_template('google1f75ecfbbecd84e2.html')
+
 @app.route('/search')
 def search():
     query = request.args.get('query', '')  # Get the 'query' parameter from the request
