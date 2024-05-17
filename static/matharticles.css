@@ -49,6 +49,7 @@ body {
 
 .filler {
   flex-grow: 1;
+  height: 1px;
   color: transparent;
   border-bottom: 1px dashed rgb(255, 255, 255); /* Add this line */
   position: relative;

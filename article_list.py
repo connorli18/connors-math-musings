@@ -22,6 +22,12 @@ math_article_list = {
         "author": "Connor Li",
         "title": "Quantitative Estimates & Sums of Two Cubes",
         "publish-date": "2024-02-07"
+    },
+    "diffinf": {
+        "filename": "diffinf.txt",
+        "author": "Connor Li",
+        "title": "Different Types of Infinity",
+        "publish-date": "2024-04-20"
     }
 }
 
