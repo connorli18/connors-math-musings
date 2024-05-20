@@ -1,0 +1,126 @@
+
+\section{Logic}
+\subsection{Implication}
+Logic table for $(p \rightarrow q) \implies$ 
+\begin{tabular}{c|c|c}
+    $p$ & $q$ & $p \rightarrow q$ \\
+     \hline
+     T & T & T \\
+     T & F & F \\
+     F & T & T \\
+     F & T & T
+\end{tabular} \\
+Logic Rule: $p \rightarrow q \equiv \neg p \vee q$ (1)
+\begin{itemize}
+    \item Inverse: $q \rightarrow p$ (2)
+    \item Converse: $\neg p \rightarrow \neg q$ (2)
+    \item Contrapositive: $\neg q \rightarrow \neg p$ (1)
+\end{itemize}
+\subsection{Propositions}
+Unary connectives: $\neg$, Binary connectives: $\wedge, \vee, \rightarrow, \iff, \oplus$\\
+\\
+NOTE: Logic tables have $2^n$ rows where $n = $ the number of connectives!\\
+\\
+Definitions:\\
+(1) Tautology: all values evaluate to true on the truth table\\
+(2) Fallacy: all values evaluate to false on the truth table\\
+(3) Contingency: a proposition that is not a tautology or a fallacy
+\subsection{Laws of Prop Logic + Inference rules}
+\includegraphics[width=8cm]{quicklatex.com-67ea85d519042c10897afc964c777539_l3.png}   
+\includegraphics[width=10cm]{Screen Shot 2023-03-08 at 11.57.11 PM.png}
+\subsection{First Order/Predicate Logic}
+Predicates are propositions that depend on one or more variables (Prop Logic $\subset$ FOL first-order logic). \\
+\\
+EXAMPLE: $x+2 = 5;\;p(x,y);\;\text{even}(x,y);\;x+y > 10$ \\
+\\
+(1) $\forall$ (Universal quantifier): requires a variable name, requires a domain name $\rightarrow$ $\forall x \in A\;\;\;p(x,y)$\\
+(2) $\exists$ (Existential quantifier): requires a variable name, requires a domain name $\rightarrow$ $\exists x \in A\;\;\;p(x,y)$\\
+\\
+EXAMPLE: There exists an even integer that is even and prime $\implies \exists x \in Z\;\;\;(2|x \wedge \text{prime}(x))$ \\
+\\
+NOTE: $\forall$ is associated with $\rightarrow$, $\exists$ associated with $\wedge$ $\Longrightarrow$ $\exists x \in A\;\;p(x) \wedge n(x)$ OR $\forall x \in A\;\;p(x) \rightarrow n(x)$ \\
+$$
+\neg(\exists x \in A\;\;p(x)) \equiv \forall x \in A\;\;\neg p(x) \quad \text{OR} \quad \neg(\forall x \in A\;\;p(x)) \equiv \exists x \in A\;\;\neg p(x)
+$$
+\pagebreak
+\section{Proofs}
+(1) Enumeration [exhaustive] $\rightarrow$ limited number of cases\\
+(2) Direct $\rightarrow$ directly from some $p(x) \dots q(x)$\\
+(3) Contrapositive $\rightarrow$ proving that the contrapositive is true (employs other strategies)\\
+(4) IFF [both directions] $\rightarrow$ you need to prove both $p \rightarrow q \wedge q \rightarrow p$ \\ 
+(5) Cases [similar to enumeration] $\rightarrow$ infinite domain such that $x$ is even vs. $x$ is odd\\ 
+(6) Contradiction \\
+(7) Counterexample [Disproof]\\
+(8) Induction
+\section{Sets}
+\subsection{Definitions}
+(1) Sets: a collection of distinct objects in which order does not matter (non-distinct sets are called multisets)\\
+(2) Sequences: ordered sets, and collections are considered unordered
+\subsection{Set Builder Notation}
+(1) $\in$ denotes that an object $a$ is in a set $A \rightarrow a \in A$.\\
+(2) $\{\}, \varnothing$ denotes the empty set ($\varnothing \subseteq A$)
+(3) Subset is defined as every element of $A$ being in $B$. $A \subseteq B \iff \forall a \in A\;\;a \in B$.
+$$
+\{\} \notin \{1,2,3,4\}\quad\text{BUT}\quad\{\} \subseteq \{1,2,3,4\}
+$$
+$$
+\{1\} \notin \{1,2,3,4\}\quad\text{BUT}\quad\{1\} \subseteq \{1,2,3,4\}
+$$
+$$
+1 \in \{1,2,3,4\}\quad\text{BUT}\quad 1 \nsubseteq \{1,2,3,4\}
+$$
+$$
+\{1,2\} \notin \{1,2,3,4\}\quad\text{BUT}\quad\{1,2\} \subseteq \{1,2,3,4\}
+$$
+$$
+\{1,2\} \in \{\{1,2\},3,4\}\quad\text{BUT}\quad\{1,2\} \nsubseteq \{\{1,2\},3,4\}
+$$
+(3) \textbf{Equality of Sets:} $A = B \iff (A \subseteq B) \wedge (B \subseteq A)$ \\
+(4) \textbf{The Universal Set} (the whole domain) is denoted $U$ which is the set of everything under consideration.
+\subsection{Power Set, Cardinality, Finite Set, Cartesian Product}
+(1) The set of all subsets of a set $S$ is called its \textbf{power set}. Note $P(\varnothing) = \{\varnothing\}$ and that $\varnothing \in P(S)$.
+$$
+S = \{1,2\} \implies P(S) = \{\varnothing,\{1\},\{2\},\{1,2\}\}
+$$
+For every set $S$, we know that $P(S)$ has $2^{n}$ elements where $n$ is the number of elements in $S$.\\
+(2) A \textbf{finite set} is a set with $n \in \mathbb{Z}^+$ elements. Otherwise, the set is defined as infinite.
+(3) The \textbf{cardinality} of a set $S$ is the number of elements of $S$. \\
+(4) The \textbf{Cartesian Product} between sets is the set of pairs crossing each element from $a$ with each element from $b$. 
+$$
+A \times B = \{(a,b)\;|\;a \in A \wedge b \in B\}
+$$
+\subsection{Set Operations}
+(1) $A \cap B$ Intersection $\rightarrow \{x\;|\;x \in A \wedge x \in B\}$\\
+(2) $A\cup B$ Union $\rightarrow \{x\;|\;x \in A \vee x \in B\}$\\
+(3) $A-B$ Difference $\rightarrow \{x\;|\;x \in A \wedge x \notin B\}$\\
+(4) $A^c$ Complement $\rightarrow \{x\;|\;x \notin A\}$
+\subsection{Set Properties}
+(1) Commutability (applies for $\cup$ and $\cap$): 
+$$
+A \cup B = B \cup A
+$$
+(2) Associability (applies for $\cup$ and $\cap$):
+$$
+A \cup (B \cup C) = (A \cup B) \cup C
+$$
+(3) Distributivity (applies for $\cup$ and $\cap$):
+$$
+A \cap (B \cup C) = (A \cap B) \cup (A \cap C)
+$$
+(4) De Morgan's Law (applies for $\cup$ and $\cap$):
+$$
+\overline{A \cup B} = \overline{A} \cap \overline{B}
+$$
+$$
+\overline{A \cap B} = \overline{A} \cup \overline{B}
+$$
+\pagebreak
+\subsection{Proof With Sets}
+(1) \textbf{Proving that $A \subseteq B$}. We need to show that $\forall a \in A\;\;\Big(a \in B\Big)$, proving that every element in one set is also in the other. \\
+(2) \textbf{Proving that $A = B$}. You need to prove both directions of this statement such that $A \subseteq B$ and $B \subseteq A$.
+\subsection{Useful Reference Problems}
+(1) Construct the following set $A = \{1,6,11,16,21,\dots\}$
+$$
+A = \{x\;|\;x \in \mathbb{Z} \wedge (\forall n \in \mathbb{Z}\;(1\leq n \rightarrow x = 5n-4))\}
+$$
+\end{document}

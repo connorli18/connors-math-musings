@@ -1,0 +1,44 @@
+<div class='section'>Logic</div><div class='subsection'>Implication</div>Logic table for $(p \rightarrow q)$
+
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <table style="border-spacing: 20px; border: 1px solid white;">
+    <tr>
+      <th style="padding: 10px; border: 1px solid white;">$p$</th>
+      <th style="padding: 10px; border: 1px solid white;">$q$</th>
+      <th style="padding: 10px; border: 1px solid white;">$p \rightarrow q$</th>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid white;">$T$</td>
+      <td style="padding: 10px; border: 1px solid white;">$T$</td>
+      <td style="padding: 10px; border: 1px solid white;">$T$</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid white;">$T$</td>
+      <td style="padding: 10px; border: 1px solid white;">$F$</td>
+      <td style="padding: 10px; border: 1px solid white;">$F$</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid white;">$F$</td>
+      <td style="padding: 10px; border: 1px solid white;">$T$</td>
+      <td style="padding: 10px; border: 1px solid white;">$T$</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px; border: 1px solid white;">$F$</td>
+      <td style="padding: 10px; border: 1px solid white;">$T$</td>
+      <td style="padding: 10px; border: 1px solid white;">$T$</td>
+    </tr>
+  </table>
+</div>
+
+Logic Rule: $p \rightarrow q \equiv \neg p \vee q$ (1)<div class="itemize"><ul><li> Inverse: $q \rightarrow p$ (2)<li> Converse: $\neg p \rightarrow \neg q$ (2)<li> Contrapositive: $\neg q \rightarrow \neg p$ (1)</ul></div><div class='subsection'>Propositions</div>Unary connectives: $\neg$, Binary connectives: $\wedge, \vee, \rightarrow, \iff, \oplus$<br><br>NOTE: Logic tables have $2^n$ rows where $n = $ the number of connectives!<br><br>Definitions:<br>(1) Tautology: all values evaluate to true on the truth table<br>(2) Fallacy: all values evaluate to false on the truth table<br>(3) Contingency: a proposition that is not a tautology or a fallacy<div class='subsection'>Laws of Prop Logic + Inference rules</div>
+
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <img src="https://i.postimg.cc/MKyCMd7b/Screen-Shot-2023-03-08-at-11-57-11-PM.png" alt="Image" width="500" style="border: 4px solid black;">
+</div>
+
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <img src="https://i.postimg.cc/cL0VQwTq/quicklatex-com-67ea85d519042c10897afc964c777539-l3.png" width="500" alt="Image" style="border: 4px solid black; background: white;">
+</div>
+
+
+<div class='subsection'>First Order/Predicate Logic</div>Predicates are propositions that depend on one or more variables (Prop Logic $\subset$ FOL first-order logic). <br><br>EXAMPLE: $x+2 = 5;\;p(x,y);\;\text{even}(x,y);\;x+y > 10$ <br><br>(1) $\forall$ (Universal quantifier): requires a variable name, requires a domain name $\rightarrow$ $\forall x \in A\;\;\;p(x,y)$<br>(2) $\exists$ (Existential quantifier): requires a variable name, requires a domain name $\rightarrow$ $\exists x \in A\;\;\;p(x,y)$<br><br>EXAMPLE: There exists an even integer that is even and prime $\implies \exists x \in Z\;\;\;(2|x \wedge \text{prime}(x))$ <br><br>NOTE: $\forall$ is associated with $\rightarrow$, $\exists$ associated with $\wedge$ $\Longrightarrow$ $\exists x \in A\;\;p(x) \wedge n(x)$ OR $\forall x \in A\;\;p(x) \rightarrow n(x)$ <br>$$\neg(\exists x \in A\;\;p(x)) \equiv \forall x \in A\;\;\neg p(x) \quad \text{OR} \quad \neg(\forall x \in A\;\;p(x)) \equiv \exists x \in A\;\;\neg p(x)$$<div class='section'>Proofs</div>(1) Enumeration [exhaustive] $\rightarrow$ limited number of cases<br>(2) Direct $\rightarrow$ directly from some $p(x) \dots q(x)$<br>(3) Contrapositive $\rightarrow$ proving that the contrapositive is true (employs other strategies)<br>(4) IFF [both directions] $\rightarrow$ you need to prove both $p \rightarrow q \wedge q \rightarrow p$ <br>(5) Cases [similar to enumeration] $\rightarrow$ infinite domain such that $x$ is even vs. $x$ is odd<br>(6) Contradiction <br>(7) Counterexample [Disproof]<br>(8) Induction<div class='section'>Sets</div><div class='subsection'>Definitions</div>(1) Sets: a collection of distinct objects in which order does not matter (non-distinct sets are called multisets)<br>(2) Sequences: ordered sets, and collections are considered unordered<div class='subsection'>Set Builder Notation</div>(1) $\in$ denotes that an object $a$ is in a set $A \rightarrow a \in A$.<br>(2) $\{\}, \varnothing$ denotes the empty set ($\varnothing \subseteq A$)(3) Subset is defined as every element of $A$ being in $B$. $A \subseteq B \iff \forall a \in A\;\;a \in B$.$$\{\} \notin \{1,2,3,4\}\quad\text{BUT}\quad\{\} \subseteq \{1,2,3,4\}$$$$\{1\} \notin \{1,2,3,4\}\quad\text{BUT}\quad\{1\} \subseteq \{1,2,3,4\}$$$$1 \in \{1,2,3,4\}\quad\text{BUT}\quad 1 \nsubseteq \{1,2,3,4\}$$$$\{1,2\} \notin \{1,2,3,4\}\quad\text{BUT}\quad\{1,2\} \subseteq \{1,2,3,4\}$$$$\{1,2\} \in \{\{1,2\},3,4\}\quad\text{BUT}\quad\{1,2\} \nsubseteq \{\{1,2\},3,4\}$$(3) <b>Equality of Sets:</b> $A = B \iff (A \subseteq B) \wedge (B \subseteq A)$ <br>(4) <b>The Universal Set</b> (the whole domain) is denoted $U$ which is the set of everything under consideration.<div class='subsection'>Power Set, Cardinality, Finite Set, Cartesian Product</div>(1) The set of all subsets of a set $S$ is called its <b>power set</b>. Note $P(\varnothing) = \{\varnothing\}$ and that $\varnothing \in P(S)$.$$S = \{1,2\} \implies P(S) = \{\varnothing,\{1\},\{2\},\{1,2\}\}$$For every set $S$, we know that $P(S)$ has $2^{n}$ elements where $n$ is the number of elements in $S$.<br>(2) A <b>finite set</b> is a set with $n \in \mathbb{Z}^+$ elements. Otherwise, the set is defined as infinite.(3) The <b>cardinality</b> of a set $S$ is the number of elements of $S$. <br>(4) The <b>Cartesian Product</b> between sets is the set of pairs crossing each element from $a$ with each element from $b$.$$A \times B = \{(a,b)\;|\;a \in A \wedge b \in B\}$$<div class='subsection'>Set Operations</div>(1) $A \cap B$ Intersection $\rightarrow \{x\;|\;x \in A \wedge x \in B\}$<br>(2) $A\cup B$ Union $\rightarrow \{x\;|\;x \in A \vee x \in B\}$<br>(3) $A-B$ Difference $\rightarrow \{x\;|\;x \in A \wedge x \notin B\}$<br>(4) $A^c$ Complement $\rightarrow \{x\;|\;x \notin A\}$<div class='subsection'>Set Properties</div>(1) Commutability (applies for $\cup$ and $\cap$):$$A \cup B = B \cup A$$(2) Associability (applies for $\cup$ and $\cap$):$$A \cup (B \cup C) = (A \cup B) \cup C$$(3) Distributivity (applies for $\cup$ and $\cap$):$$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$$(4) De Morgan's Law (applies for $\cup$ and $\cap$):$$\overline{A \cup B} = \overline{A} \cap \overline{B}$$$$\overline{A \cap B} = \overline{A} \cup \overline{B}$$<div class='subsection'>Proof With Sets</div>(1) <b>Proving that $A \subseteq B$</b>. We need to show that $\forall a \in A\;\;\Big(a \in B\Big)$, proving that every element in one set is also in the other. <br>(2) <b>Proving that $A = B$</b>. You need to prove both directions of this statement such that $A \subseteq B$ and $B \subseteq A$.<div class='subsection'>Useful Reference Problems</div>(1) Construct the following set $A = \{1,6,11,16,21,\dots\}$$$A = \{x\;|\;x \in \mathbb{Z} \wedge (\forall n \in \mathbb{Z}\;(1\leq n \rightarrow x = 5n-4))\}$$

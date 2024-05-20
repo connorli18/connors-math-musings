@@ -1,0 +1,19 @@
+\section{Non-Vanishing of the Riemann Zeta Function}
+\subsection{Problem Statement}
+In this problem, we aim to prove that the Riemann zeta function $\zeta(s)$ does not vanish for $\Re(s) > 1$. 
+\subsection{The Proof}
+In order to prove the desired statement, first, let's prove the following lemma.
+\begin{boxedsection}
+\textbf{Lemma:} If $\sum |a_n| < \infty$, then the product $\prod_{n=1}^\infty \left(1 + a_n\right)$ converges. Moreover, the product converges to $0$ iff one of its factors is $0$.\\
+\\
+\textbf{Proof:} If the sum converges, then there must exist some $L$ such that $|a_n| < \frac{1}{2}$ for all $n \geq L$. Now, ignore all the finite terms less than $L$ and write the partial products of the remaining terms as follows where $B_N = \sum b_n$ and $b_n = \log(1 + a_n)$.
+$$
+\prod_{n=1}^N (1+a_n) = \prod_{n=1}^N e^{\log(1+a_n)} = e^{B_N}
+$$
+Using the power series expansion, we have that $\log(1 + z) \leq 2|z|$, if $|z| \leq \frac{1}{2}$. Then, $|b_n| < 2 |a_n|$ and $B_N$ converges to some complex number $B$ as $N \rightarrow \infty$. Since $f(x) = e^x$ is continuous, we have that $e^{B_N} \rightarrow e^B$ as $N \rightarrow \infty$. And, if $a_n + 1 \neq 0$ for all $n$, then the product converges to a non-zero limit $e^B$. 
+\end{boxedsection}
+We can rewrite the product definition of the $\zeta$ function.
+$$
+\zeta(s) = \prod_p \left(1-\frac{1}{p^s}\right)^{-1} = \prod_p \left(\frac{p^s}{p^s-1}\right) = \prod_p \left(1 + \frac{1}{p^s-1}\right)
+$$
+If we apply the lemma for $a_n = \frac{1}{p^s - 1}$, then we can use elementary calculus to show that $\sum |a_n|$ converges for $\Re(s) > 1$, which implies that the product also converges for $\Re(s) > 1$. Since $\left(1-\frac{1}{p^s}\right)^{-1} \neq 0$ for all $p$, we can apply the second half of the lemma to show $\zeta(s) \neq 0$ for all $\Re(s) > 1$.

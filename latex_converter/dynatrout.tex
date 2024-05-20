@@ -1,0 +1,38 @@
+
+\section{The Trout Problem}
+\subsection{Analysis of Dynamical System}
+We can represent the dynamical system with the following recursive definition where $a_n$ represents the trout population at year $n$. This follows from the recursive definition of dynamical systems with carrying capacities.
+$$
+a_n  = 1.7 \cdot a_{n-1} \cdot (1-\frac{a_{n -1}}{20000})
+$$
+In terms of fixed points, let's solve the equation:
+$$
+x = 1.7 \cdot x \cdot (1-\frac{x}{20000}) \implies x = \{0,\;8235.3\}
+$$
+We know that $f'(x) = 1.7\left(1-0.0001x\right)$. Thus, we just need to examine the behavior of this above function at our fixed points.
+$$
+f'(0) = 1.7 > 0 \implies \text{repelling fixed point}
+$$
+$$
+f'(8235.3) = 0.3 > 0 \implies \text{repelling fixed point}
+$$
+\subsection{Natural Growth}
+We want to find the number of years it will take for the trout population to reach 19,000 where our initial value is 10,000. We can do this recursively via a python program:
+\begin{lstlisting}[language=Python]
+count, trout = 0, 10000
+while(trout < 19000):
+    count += 1
+    trout = 1.7*trout*(1-trout/20000)
+return count
+\end{lstlisting}
+Interestingly enough, this produces a never-ending loop - which means that it never reaches 19k threshold.
+\subsection{Supplemented Growth}
+In terms of stocking $7000$ per year, we can think of this in terms of the exact same python equation (except slightly adjusted):
+\begin{lstlisting}[language=Python]
+count, trout = 0, 10000
+while(trout < 19000):
+    count += 1
+    trout = 1.7*trout*(1-trout/20000) + 7000
+return count
+\end{lstlisting}
+\end{document}

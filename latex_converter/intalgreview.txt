@@ -1,0 +1,70 @@
+<div class='section'>Classification of Numbers</div>One of the most important fundamental concepts of math is the classification of different types of numbers. To do this, we will start with the most basic type of numbers called the natural numbers. 
+
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <table>
+    <tr>
+      <td style="padding-right: 20px;">(\( \mathbb{N} \)) <b>Natural Numbers:</b></td>
+      <td style="padding-left: 20px;">\( 1,2,3, \dots \)</td>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">(\( \mathbb{W} \)) <b>Whole Numbers:</b></td>
+      <td style="padding-left: 20px;">\( 0,1,2,3, \dots \)</td>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">(\( \mathbb{Z} \)) <b>Integers:</b></td>
+      <td style="padding-left: 20px;">\( \dots,-2,-1,0,1,2,\dots \)</td>
+    </tr>
+  </table>
+</div>
+
+If you notice, the integers contain all the whole and natural numbers. The next category of numbers is known as the <b>rational numbers</b> ($\mathbb{Q}$). These are any numbers that can be described as a fraction or quotient of two integers $\frac{a}{b}$. This means that all integers are encompassed in the rationals since every integer can be expressed as $\frac{a}{1}$ (itself over $1$). <br><br>A really important distinction for rational numbers is that their decimal value can go on forever. Consider the number $1.\overline{3333}$ where the decimals repeat infinitely. Although this seems like it would not be rational, you can express $1.\overline{3333} = \frac{4}{3}$, which is the quotient of two integers. Also, another fun tip is that any decimal with finite decimal places is rational. <br><br><b>Irrational numbers</b> ($\mathbb{I}$) are like "everything else." This includes certain square roots, $\pi$, or $e$. And finally, these are all encompassed within a larger category of numbers called \textbf{real numbers} ($\mathbb{R}$). We can visualize all the numbers as follows in the chart below.
+
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <img src="https://cdn-academy.pressidium.com/academy/wp-content/uploads/2021/02/classification-of-numbers-diagram-1536x1023.png" alt="Image" style="border: 4px solid black; width: 600px;">
+</div>
+
+<div class='section'>Exponents and Radicals</div>The following are important exponent properties that you must know!
+
+<div style="display: flex; justify-content: center; padding: 20px;">
+  <table>
+    <tr>
+      <th style="padding-right: 20px;">Name</th>
+      <th style="padding-left: 20px;">Exponent Rule</th>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">Zero Rule</td>
+      <td style="padding-left: 20px;">\(a^0 = 1\)</td>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">Product Rule</td>
+      <td style="padding-left: 20px;">\(a^m \times a^n = a^{m+n}\)</td>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">Quotient Rule</td>
+      <td style="padding-left: 20px;">\(\frac{a^m}{a^n} = a^{m-n}\)</td>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">Power of Product</td>
+      <td style="padding-left: 20px;">\((ab)^m = a^mb^m\)</td>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">Power of Quotient</td>
+      <td style="padding-left: 20px;">\(\left(\frac{a}{b}\right)^m = \frac{a^m}{b^m}\)</td>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">Power of a Power</td>
+      <td style="padding-left: 20px;">\((a^m)^n = a^{mn}\)</td>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">Negative Exponent</td>
+      <td style="padding-left: 20px;">\(a^{-m} = \frac{1}{a^m}\)</td>
+    </tr>
+    <tr>
+      <td style="padding-right: 20px;">Fractional Exponent</td>
+      <td style="padding-left: 20px;">\(a^{\frac{m}{n}} = \sqrt[n]{a^m}\)</td>
+    </tr>
+  </table>
+</div>
+
+
+One of the most important connections with exponents is that we can express all roots as a fractional exponent. For example, the square root of $2$ can be expressed as follows.$$\sqrt{2} \implies 2^\frac{1}{2} \quad \text{ AND } \quad \sqrt[6]{8} \implies \sqrt[6]{2^3} \implies 2^\frac{3}{6} \implies 2^\frac{1}{2}$$<div class='section'>Algebraic Expressions</div>In this section, we will be going over $3$ important concepts related to algebraic expressions. And even though you've probably seen these before, I think that it's still important to review.<div class='subsection'>Factoring Quadratics</div>Let's start with <b>factoring quadratics</b>. Remember, that all quadratics come in the form below. However, for simplicities sake, we will assume that $a = 1$ and that our quadratic takes the transformed form:$$ax^2 + bx + c \implies x^2 + bx + c$$The strategy here is what we call an "educated guess." We want to find two numbers that (1) add up to $b$ and (2) multiply to equal $c$. To optimize your time, start with numbers that multiply to $c$ and filter down to the pairs of numbers that add up to $b$. And although this may seem complicated, let's do a couple of examples. First, consider the following polynomial.$$x^2 + 5x + 6$$We know that numbers that multiply to equal $6$ are as follows: $(6,1), (2,3)$. Out of these pairs, the ones that add up to $5$ filter our options so that $(2,3)$ is the only one left! Thus, we can factor the expression into the following:$$x^2 + 5x + 6 \implies (x+2)(x+3)$$Take, for another example, the following expression:$$x^2 + 11x + 24$$Finding the numbers that multiply to $24$, we have the following pairs: $(1,24),(2,12),(3,8),(4,6)$. Filtering further based on the knowledge that the two numbers must add to $11$, we have that our expression is actually the following.$$x^2 + 11x + 24 \implies (x+3)(x+8)$$Although the examples have not explicitly covered all the possibilities of what a quadratic expression could look like, the only important variations are negatives!<div class='subsection'>Difference of Squares</div>Now, let's move on to the <b>difference of squares formula</b>. All possible problems that can be solved by the difference of squares fomula come in the following form:$$x^2 - a^2$$The formula goes as follows and it's very useful to simplify more complex expressions.$$x^2 - a^2 \implies (x+a)(x-a)$$Let's do some examples. Take for example, the expression below can be simplified using our knowledge of squares the formula above.$$x^2 - 9 \implies x^2 - 3^2 \implies (x+3)(x-3)$$Less obvious examples include this equation, which you can manipulate to get your desired result!$$x^2 - 15 \implies x^2 - \left(\sqrt{15}\right)^2 \implies \left(x- \sqrt{15}\right)\left(x+\sqrt{15}\right)$$<div class='subsection'>Completing the Square</div>Finally, let's talk about (what is often considered the most confusing type of solution) <b>completing the square</b>. When completing the square, you are often presented with an equation that looks like the following and convert it into something of the form (also shown below):$$x^2 + bx + c \implies (x-m)^2 + n$$The strategy writ large begins by ignoring the $c$ term. While this may seem strange, we really need to get that $x^2 + bx$ term correct before we can do adjusting for the last term. To do this, we are going to set $m = \frac{b}{2}$ and expand the term. The reasoning behind this is because if $m= \frac{b}{2}$, the expression $(x-m)^2$ expands to the following:$$(x-m)^2 \implies \left(x-\frac{b}{2}\right)^2 \implies x^2 + bx + \frac{b^2}{4}$$As you can see, now the first two terms line up (which was our goal in the first place)! Now, it's just a matter of adjusting the extra $\frac{b^2}{4}$ in our equation to match the $c$ in our original expression. Now, this may all be very confusing, so let's do some examples. Start with the following:$$x^2 + 6x + 15$$Using the strategy above, we want to start with the expression $m = \frac{6}{2} = 3$, thus allowing us to take the very first step.$$(x+3)^2 \implies x^2 + 6x + 9$$However, we see that our original expression is $c = 15$ whereas our current "builder step only has $c = 9$". So now, to adjust one equation to equal the other, we add the difference ($6$ in this case) using our $n$ term from the very first equation.$$(x+3)^2 + 6 \implies (x^2 + 6x + 9) + 6 \implies x^2 + 6x + 15$$Let's do another one! Consider the following:$$x^2 - 12x + 3$$The first step is to create our "builder step" where we have:$$(x-6)^2 \implies x^2 -12x + 36$$Now, our original equation has $+3$ instead of $+36$, so we need to use our $n$ term to adjust the numbers correctly. Since they share a difference of $-33$, we can rewrite our equation:$$(x-6)^2 - 33 \implies (x^2 + 12x + 36) - 33 \implies x^2 - 12 + 3$$Thus, completing the square for our original equation, we get that $(x-6)^2 - 33$ is our "completed-square" formula.<div class='section'>Solving Equations & Inequalities</div><div class='subsection'>Solving Linear Equations</div>There is really only one rule to solving <b>linear equations</b>: "whatever you do to one side you must do to the other." You may know how to do this already, so I will keep it brief by only doing $1$ or $2$ examples.\begin{align*}15x + 6 &= \frac{72}{3}\\15x + 6 - 6 &= \frac{72}{3} - \frac{18}{3}\\15x &= \frac{54}{3}\\x &= \frac{8}{15}\end{align*}<div class='subsection'>Solving Inequalities</div>In order to <b>solve inequalities</b>, the only difference between this and solving normal equations is that when \textbf{diving or multiplying by a negative number, you must switch the equality sign}. For example, take the following problem (where you divide in the second step by $-3$ which causes you to flip the sign):\begin{align*}-3x + 21 &\leq 30\\-3x &\leq 9\\x &\geq 3\\\end{align*}<div class='subsection'>Solving Quadratic Equations</div><div class='subsubsection'>Factoring</div><b>Factoring</b> is usually the easiest method to solving quadratic equations, but not every equation can be factored. Let's assume, for the sake of the example, that we can factor this equation. The first step is to move every item of the equation to one side so that your equation looks like this (the equals $0$ part is super important!):$$ax^2 + bx + c = 0$$Now, use the strategies we've outlined before to factor the left side of the quadratic so that your equation looks like this:$$(x - \alpha)(x - \beta) = 0$$Now, you have your two solutions because if $x = \alpha$ or $x = \beta$, your whole term goes to zero. As you can see, this method is great, but what if the equation is not factor-able?<div class='subsubsection'>Quadratic Formula</div>Take, for example, the following equation $2x^2 + 5x - 7$. Since it's not obviously factorable, we need alternative solutions for problems like these. Well, just in luck - the quadratic formula exists and is here to help you solve any equation of all time. It tells us that any equation in the following form can be solved using its formula.$$ax^2 + bx + c = 0$$In fact, the solution always takes the form of:$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$Solving our initial equation, we have that $a = 2, b = 5, c = -7$. Plugging into the formula, we know that solution is thus:$$x = \frac{-(5) \pm \sqrt{(5)^2 - 4(2)(-7)}}{2(2)} = \frac{-5 \pm \sqrt{81}}{4} \implies x = -\frac{7}{2}, 1$$<div class='section'>Graphs</div><div class='subsection'>Distance Formula</div>As you've probably heard before, the shortest distance between two points is a line. Well, this also holds true for the Cartesian coordinate system. And to find the distance between any two points, we use a certain "distance formula" derived from the Pythagorean theorem. Imagine you have two points $P_1: (x_1,y_1)$ and $P_2: (x_2, y_2)$. The formula states that the distance between any two points, denoted $d$, is:$$d = \sqrt{\left(x_1 - x_2\right)^2 + \left(y_1 - y_2\right)^2} = \sqrt{\left(\Delta x\right)^2 + \left(\Delta y\right)^2}$$So, for the points $(1,5)$ and $(4,9)$, we can employ the distance formula to find that $d$ is:$$d = \sqrt{\left(4-1\right)^2 + \left(9-5\right)^2} =  \sqrt{3^2 + 4^2} = 5$$<div class='subsection'>Components of Lines</div>This should (hopefully) be review, but there are really only two important components to any line. The first (and less important) is the <b>y-intercept</b>, essentially just the y-value where the line intersects the y-axis. An easy way to find this value is by simply plugging in $x=0$ into the equation of the line, which will output the value of the y-intercept for that line.<br><br>The second (most important and defining) quality of a line is known as <b>slope</b>. Going by many names (rise over run, etc.), it just tells us how steep the line is! The formula for it is as follows:$$\text{Slope} = \frac{\Delta y}{\Delta x} = \frac{y_2 - y_1}{x_2 - x_1} = \frac{y_1 - y_2}{x_1 - x_2 }$$<div class='subsection'>Formulas for Lines</div>Using the two properties above, we can formulate three different descriptions for lines.<div class='subsubsection'>General \& Standard Form</div>This form is pretty useless and is usually the most basic/elementary description of a line. The form looks like the following:$$ax + by + c = 0$$Its only utility is that it can oftentimes be converted algebraically to one of the below forms (which can then be a bit more descriptive of the line).<div class='subsubsection'>Slope-Intercept Form</div>This form uses both the slope and the y-intercept of the line. The form follows the below structure where $m$ is the slope of the line and $b$ is the y-intercept:$$y = mx + b$$If you are given a line in slope-intercept form, it makes it much easier to graph and deduce information about the line!<div class='subsubsection'>Point-Slope Form</div>For point-slope form, we utilize the slope and ANY point on the line. We will call the slope $m$ and the point $P: (x_0,y_0)$. The form takes the following structure and can be expanded into slope-intercept form:$$y = m(x - x_0) + y_0$$

@@ -1,0 +1,254 @@
+
+\section{What is a Function?}
+\subsection{Overview of Functions}
+A function is a rule that assigns to each element $x$ in a set $A$ exactly one element, called $f(x)$, in a set $B$. The symbol $f(x)$ denotes the value of the function at $x$. This may sound confusing, but a good metaphor for functions is a machine - every number you input only has $1$ output, and the ``machine'' tells you how to create that output. \\
+\\
+A really important caveat is that functions DO NOT have to have unique outputs, they just can't have multiple outputs for the same input. We often express functions as input-output tables like as follows:
+$$
+\begin{tabular}{c|c}
+    x & f(x) \\
+    \hline
+    1 & 3\\
+    2 & 6\\
+    3 & 9\\
+    4 & 12\\
+\end{tabular}
+$$
+The above is an example of a valid function because each input only has $1$ output. Even the function described by the input-output table is considered representative of a function:
+$$
+\begin{tabular}{c|c}
+    x & f(x) \\
+    \hline
+    1 & 9\\
+    2 & 9\\
+    3 & 9\\
+    4 & 9\\
+\end{tabular}
+$$
+Although this may seem confusing, each input only has $1$ output which makes it a function. And to help you understand what is not a function, here are two function tables that would not be considered functions (because they violate the rule that every input only has $1$ corresponding output).
+$$
+\begin{tabular}{c|c} 
+     x & f(x) \\
+     \hline
+     1 & 2 \\
+     1 & 3 \\
+     2 & 4 \\
+     3 & 8 \\
+\end{tabular} \quad \quad
+\begin{tabular}{c|c}
+     x & f(x) \\
+     \hline
+     1 & 2 \\
+     2 & 5\\
+     3 & 10\\
+     4 & 5,6 \\
+\end{tabular}
+$$
+In both cases, one of the inputs has two corresponding outputs (a huge no-no for functions). 
+\subsection{Function Terminology}
+\subsubsection{Evaluating Functions}
+Oftentimes, functions will be presented to you in the following form:
+$$
+f(x) = 3x + 2
+$$
+Although it looks scary, it's nothing special. In this case, $x$ is your input value and $f(x)$ would be the corresponding output value. For example, if $x = 3$ was our input value, we would have our corresponding output value $f(3) = 3(3) + 2 = 11$. Thus, to ``evaluate'' a function at some value of $x$ means simply to plug in your value and find your corresponding $f(x)$. If you do this with enough input values, you can build yourself a table!
+\subsubsection{Other Terminology}
+(1) \textbf{Domain:} the set of all inputs for the function\\
+(2) \textbf{Range:} the set of all outputs for the function\\
+\\
+Oftentimes the domains of functions will be explicitly listed, but sometimes it's your job to figure for yourself. Take for example the following function:
+$$
+g(x) = \sqrt{9-x^2} 
+$$
+Although we would like to say that the domain is all real numbers, we have to consider which input values actually result in legitimate outputs. If you think carefully, you know that the inside of a square root can never be negative, which limits your domain from $[-3,3]$ because anything larger than $3$ or less than $-3$ results in err.
+\subsection{Graphing Functions}
+If you have a function that is not immediately obvious, the strategy for graphing is as follows:
+$$
+f(x) = 2^x \implies \text{Input-Output Table} \implies \text{Graph}
+$$
+Using the intermediary step of creating the input-output table is super helpful when you are not entirely sure what your function looks like. This is because graphing individual points and connecting a line allows you to put together the shape of the graph piece-by-piece.
+\subsubsection{VLT (Vertical Line Test)}
+One thing that is extremely useful in determining whether a graph is a function or not is something known as the VLT (vertical line test). Essentially, if you're given a graph, drawing a vertical line anywhere should intersect the graph at most at one point. Otherwise, that would mean that at any given input, there are two corresponding outputs which violate the law of functions!
+$$
+\includegraphics[width = 9cm]{images.png}
+$$
+In this image, we can see that at every point in the domain, the first function $f(x)$ passes the VLT. However, the second function $g(x)$ does not pass the VLT, which means it is NOT a function! 
+\pagebreak
+\section{Transformations of Functions}
+In this section, we will discuss the different types of functions as well as how to manipulate them with transformations. We will first define a couple of very important parent functions and then delve into how to shift (vertical + horizontal), stretch, and compress these functions into their transformations!
+\subsection{Parent Functions}
+Parent functions is a technical term for functions that are the bare-bones representation of a ``family'' of similar-looking graphs. The whole point is that parents represent the simplest form of a function and the transformations that we will apply shape them into the transformed children! That being said, let me introduce to the parents :)\\
+\\
+(1) \textbf{Lines and Linear Graphs}\\
+\\
+Refer to the section on lines in Lecture Notes (Review). However, remember that lines can take 3 forms, which will be an important point later on in the course. The parent function for all lines is:
+$$
+y = x \quad \text{OR} \quad f(x) = x
+$$
+This may seem confusing since you've always been taught $y = mx + b$, however, in this section, we will see how the $m,\;b$ are examples of transformation to the parent function listed above.\\
+\\
+(2) \textbf{Parabolas}\\
+\\
+Although you may have to been explicitly taught this before, parabolas look like the letter ``U''. Below, I have included the parent function $f(x) = x^2$. Don't fret though, because we will cover these later in an entire section on polynomial functions. Just know that they grow really fast (much faster than lines as $x$ approaches $\infty$)!
+$$
+\includegraphics[width = 9cm]{f7c27c7d79c9141d0731362a4554caa7.png}
+$$
+\subsection{Vertical Shift}
+The vertical shift is the easiest shift! Imagine you have the line $f(x) = x$ and you want to shift every point up by $3$ units. If every $f(x)$ needs to be $3$ higher than the parent functions, we can simply just add $3$ to the end of it!
+$$
+f(x) = x \longrightarrow\;\text{Vertical Shift by\;} 3\;\longrightarrow f(x) = x + 3 
+$$
+If you want to shift up by $c$ units, you just tack a $+c$ onto the end of any parent function! 
+$$
+f(x) = x \longrightarrow f(x) = x + c
+$$
+If you want to shift down by $c$ units, (well you guessed it!) you just tack a $-c$ onto the end of the parent function instead. Remember that you are adding a $\pm c$ to the outside of the function as in $f(x) \pm c$! Attached below is an example of this shift in action!
+$$
+\includegraphics[width=9cm]{Screen Shot 2023-06-13 at 12.42.09 AM.png}
+$$
+\subsection{Horizontal Shift}
+The horizontal shift is easy too, but a little more conceptually difficult. If you want a more in-depth explanation, please feel free to ask me. However, this being said \dots recall back to the vertical shift, which we called the ``external'' $\pm c$. The reason why we stressed the word external is that horizontal shifts are ``internal'' $\pm c$'s. What this means is the following:
+$$
+f(x) \longrightarrow\;\text{Horizontal Shift by}\;c\;\longrightarrow f(x-c)
+$$
+Now you may notice that we use $-c$ instead of $+c$ internally. This is a rule that a shift of the graph right is $-c$ internally and a shift of the graph left is a $+c$ internally (just memorize it). Here are a couple of examples:\\
+\\
+(1) Shifting the line $f(x) = x$ right by $3$ units horizontally
+$$
+f(x) = x \longrightarrow f(x-3) = x-3
+$$
+(2) Shifting the parabola $f(x) = x^2$ right by $3$ units horizontally
+$$
+f(x) = x^2 \longrightarrow f(x-3) = (x-3)^2
+$$
+Notice that internal adjustments actually affect the way functions are transformed. You can't just tack on the $-3$ at the end anymore, you must incorporate it into the function. And for reference, here is a graphical example.
+$$
+\includegraphics[width=9cm]{Screen Shot 2023-06-13 at 1.15.49 AM.png}
+$$
+\subsection{Reflections}
+For the sake of generality, we define a function $y = f(x)$ as any possible, valid function. What we mean by this is that, sometimes, we need a way to talk about general functions to explain how transformations work (because explaining specifics for every function would be repetitive). To provide some context, we denote vertical shifts of these ``general functions'' by $y = f(x) + C$ and horizontal shifts by $y = f(x + C)$. Hopefully, this provides some context as to how I will discuss reflections. For reference, there are two common types of reflections, which I will discuss separately. \\
+\\
+\textbf{(1) Reflection across the x-axis}: the way we denote this reflection is using the parent function discussed above $y = f(x)$. In short, you just add a negative sign to the OUTSIDE of the function (in order to flip all the y-values from positive $\iff$ negative).
+$$
+y = f(x) \longrightarrow \;\text{X-Reflection}\; \longrightarrow y = -f(x)
+$$
+Now, imagine you start out with the function $f(x) = x^2 - 2x + 3$ and you want to apply this transformation. All you need to do is follow the rules of simply multiplying by $(-1)$ on the OUTSIDE, then denoting the transformed function as $f_0(x)$.
+$$
+f(x) = x^2 - 2x + 3 \implies f_0(x) = (-1)(x^2 -2x + 3) \implies f_0(x) = -x^2 + 2x - 3
+$$
+Below is an image using the parent function $f(x) = x^2$ to show how this reflection flips across the x-axis.
+$$
+\includegraphics[width=9cm]{Screen Shot 2023-06-16 at 11.18.58 AM.png}
+$$
+\textbf{(2) Reflection across the y-axis}: as you can probably imagine, the reflection is fairly similar. However, instead of multiplying by $(-1)$ on the outside, we multiply it on the INSIDE of the function.
+$$
+y = f(x) \longrightarrow \;\text{Y-Reflection}\; \longrightarrow y = f(-x)
+$$
+If we take the same function $f(x) = x^2 - 2x + 3$ and we apply the same transformation, we can denote the result by $f_1(x)$. Essentially, the strategy here is to replace every ``$x$'' with a ``$-x$'' as shown below. 
+$$
+f(x) = x^2 - 2x + 3 \implies f_1(x) = (-x)^2 - 2(-x) + 3 \implies f_1(x) = x^2 + 2x + 3
+$$
+Here is a graph using that same parent function to show how the transformation works across the y-axis.
+$$
+\includegraphics[width=9cm]{Screen Shot 2023-06-16 at 11.31.17 AM.png}
+$$
+\subsection{Stretching and Shrinking}
+Although they are super similar, we often differentiate the different types of stretching transformations between vertical and horizontal stretch/compressions. In the following section, I will cover both topics separately, but please remember that they are closely related!
+\subsubsection{Vertical Stretching/Compression}
+The general formula for vertical stretching/compression is based on the parent function $y = f(x)$. For all VERTICAL transformations of this kind, we have (where $c$ is some numerical constant):
+$$
+y = f(x) \longrightarrow \;\text{Vertical Stretch/Comp}\;\longrightarrow y = c\cdot f(x)
+$$
+Basically, you multiply the outside of the function by a constant! The value of that constant determines whether or not you are stretching or compressing the function:
+\begin{align*}
+    c > 1 & \quad \text{Stretch} \\
+    c = 1 & \quad \text{Same Function}\\
+    0 < c < 1 & \quad \text{Compression} 
+\end{align*}
+Here is an example of a function $f(x) = \sin(x)$. Although you haven't seen this function before, simply look at the way the transformations work depending on the value of $c$. As you can tell, the red function is the original function, the blue (where $c = 3$) is a stretch, and the green (where $c = \frac{1}{2}$) is a compression.
+$$
+\includegraphics[width=11cm]{Screen Shot 2023-06-16 at 11.58.18 AM.png}
+$$
+\subsubsection{Horizontal Stretching/Compression}
+The general formula for all HORIZONTAL stretch/compressions is based on the following where $c$ is the numerical constant.
+$$
+y = f(x) \longrightarrow \;\text{Horizontal Stretch/Comp}\; \longrightarrow y = f(c \cdot x)
+$$
+Basically, you replace every $x$ in the equation with a $c \cdot x$, and similar to vertical transformation, the value of the constant $c$ determines how it is stretched.
+\begin{align*}
+    c > 1 & \quad \text{Compression} \\
+    c = 1 & \quad \text{Same Function}\\
+    0 < c < 1 & \quad \text{Stretch}
+\end{align*}
+Here is an example on $f(x) = \sin(x)$. You can see that the red is the general curve and the blue is the compressed version in accordance with the $c$ classifications above. The green is the stretched curve!
+$$
+\includegraphics[width = 10cm]{Screen Shot 2023-06-16 at 1.43.57 PM.png}
+$$
+\subsection{All Transformations}
+The real question with these transformations is how do we combine them? Most functions you'll see will never be as simple as a single transformation, and you will have to apply your knowledge of transformations to build whatever graph you can imagine. Although this section will be brief, this example is a fantastic review of all your function properties. Let's start with the following function:
+$$
+f(x) = -2(x-2)^2 + 3
+$$
+The rule of multiple transformations is to work inside out (start from the $x$ and work your way outward)! First, let's identify the ``parent'' function. Although it may not seem obvious (it will with practice \dots), the parent function is $f(x) = x^2$. So, let's start with our transformation.\\
+\\
+The first transformation (working inside-out) is $f(x) = (x-2)^2$. If you refer back to your notes, you will see that this is a \textbf{horizontal shift right $2$ units}. The next transformation is the $f(x) = -2(x-2)^2$. Sneakily enough, this is a double transformation. Not only is a \textbf{stretch by a factor of $2$} but the negative sign \textbf{flips it over the x-axis}. Finally, the $f(x) = -2(x-2)^2 + 3$ is a \textbf{vertical shift up by $3$ units}. If you do this step-by-step, you can graph almost every function - no matter how complicated! Below is an image detailing the steps.
+$$
+\includegraphics[width=9cm]{Screen Shot 2023-06-16 at 4.18.16 PM.png}
+$$
+Here, I've included each step for how to graph this. Once you graph the parent function, you begin by horizontally shifting until your new ``parent'' function looks like $f_1$. Then you apply the stretch to $f_1$ in order to produce $f_2$ (for parabolas a vertical stretch makes it skinnier). Then, you continue repeating the process for every new transformation until you've reached the final product $f_4$! \\
+\\
+Now, try this function by yourself as practice. Below, I've included the shift diagram - but only for you to look at once you have completed the exercise.
+$$
+f(x) = -\frac{1}{2}(x+3)^2 - 1
+$$
+The answer is the following transformations: horizontal left shift by $3$, vertical compression by a factor of $\frac{1}{2}$, flip over the x-axis, vertical shift down $1$, and voila!
+$$
+\includegraphics[width=9cm]{Screen Shot 2023-06-16 at 4.32.08 PM.png}
+$$
+\section{Miscellaneous Materials}
+\subsection{Even and Odd Functions}
+These sound hard, but they're actually really easy to understand. First, let me present you with the formal definition defined over all values of $x$:
+\begin{align*}
+    \text{Even Function} & \quad \quad f(x) = f(-x) \\
+    \text{Odd Function} & \quad \quad f(-x) = -f(x)
+\end{align*}
+Even functions are symmetrical around the y-axis. This means that if you reflect one side over the y-axis, it would be the same on the other side. Odd functions are symmetrical around the origin. Now, you're probably asking yourself how something is symmetrical around a point! Well, it just means that if you rotate the function around the origin $180^\circ$, it would be the same!
+$$
+\includegraphics[width=11cm]{a2u4b1oddoreven.png__1200x900_q85_subsampling-2.jpg}
+$$
+\subsection{Quadratic Functions}
+Quadratic functions are not very useful, but there are a couple of forms of quadratic equations that are extremely important. The only important distinguishing characteristic is that every quadratic equation has an $x^2$ as the highest power of $x$.\\
+\\
+\textbf{(1) Standard Form:} We can label the standard form of the quadratic equation as $y = ax^2 + bx + c$, where $a,b,c$ are constants and $b,c$ can equal $0$. Examples include:
+$$
+y = 3x^2 - 5x + 2 \quad \text{AND} \quad f(x) = -2x^2 + 1
+$$
+\textbf{(2) Vertex Form:} Before I jump into how to find the vertex form, I want to explain its general form of the equation:
+$$
+y = a(x-h)^2 + k
+$$
+The above form is an example of the vertex form of a quadratic equation. In the above form, $(h,k)$ is the vertex of the parabola and $a$ is some constant that determines the shape/direction of the parabola:
+\begin{align*}
+    a > 1 & \quad \text{Upward-Opening, Thinner} \\
+    a = 1 & \quad \text{Upward-Opening, Regular Shape}\\
+    0 < a < 1 & \quad \text{Upward-Opening, Wider} \\
+    a < 0 & \quad \text{Downward-Opening, same rules above}
+\end{align*}
+Usually, you can see how the standard form is a bit limiting and doesn't tell you much information. To convert into vertex form (which tells you way more information), you need to complete the square (see Manual $1$ for more details on how to do that).
+\subsection{Function Compositions}
+Remember from function notation that we denote functions as $f(x), \;g(x)$ and assign them ``function'' rules. For example, a valid function can be $f(x) = 3x + 2$ and another valid function, which we distinguish by the letters, $g(x) = x^2 + 1$. But now, imagine if we wanted to compose these functions together!\\
+\\
+For example, if I wanted to compose another function $h = f+g$, we could literally just add the two functions. Defined below, here is the example. 
+$$
+h(x) = f(x) + g(x) \implies h(x) = (3x + 2) + (x^2 + 1) \implies h(x) = x^2 + 3x + 3
+$$
+Another example is the composition $r = f \cdot g$ or $r(x) = f(x) \cdot g(x)$. Similar to the example above, we simply just multiply the functions together. Defined below, here is the example.
+$$
+r(x) = f(x) \cdot g(x) \implies r(x) = (3x+2) \cdot (x^2 + 1) \implies r(x) = 3x^3 + 2x^2 + 3x + 2
+$$
+The last example is often the most important composition. In principle, it's written as $f \circ g$, but the way you should think about it is $f\left(g(x)\right)$. Essentially, think about replacing the input of the ``outside'' function with another function. 
+$$
+f \circ g \implies f\left(g(x)\right) \implies f(x^2 + 1) \implies f \circ g = 3(x^2 + 1) + 2 \implies f \circ g = 3x^2 + 5
+$$
+We will go over this more in-depth later on in-class, so please do not worry!
+\end{document}

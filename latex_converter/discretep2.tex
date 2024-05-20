@@ -1,0 +1,157 @@
+
+\section{Relations}
+\subsection{Definitions}
+\textbf{[1] Relation:} $R$ is a relation from set $A$ to set $B$ provided that $R \subseteq A \times B$ (cartesian product).\\
+\textbf{[2] Inverse Relation:} Inverse relation of $R$, defined from $B$ to $A$, is defined as following, $R^{-1} = \{(y.x)\;|\;(x,y) \in R\}$
+\subsection{Visual Representations}
+\textbf{[1] Digraphs:} directed graphs that represent the relation with a set of nodes and edges\\
+\textbf{[2] Boolean Matrix:} rows are elements of $A$, columns $B$, $1$ if there is a relation between $(x,y)$, otherwise $0$
+\subsection{Properties of Relations}
+\textbf{[1] Reflexivity:} $\forall x \in A\;\;x\;R\;x$ \\
+\textbf{[2] Irreflexive:} $\forall x \in A\;\;x\;\cancel{R}\;x$\\
+\textbf{[3] Symmetric:} $\forall x,y \in A\;\;(x\;R\;y \implies y\;R\;x)$\\
+\textbf{[4] Antisymmetric:} $\forall x,y \in A\;\;(x\;R\;y \implies x = y)$\\
+\textbf{[5] Transitive:} $\forall x,y,z \in A\;\;(x\;R\;y \wedge y\;R\;z \implies x\;R\;z)$\\
+\textbf{[6] Equivalence Relation:} $R$ is reflexive, symmetric, and transitive!
+\subsection{Equivalence Classes}
+\textbf{Definition:} If $a \in A$, the equivalence class of $a$, $[a]$, is denoted by $[a] = \{x \in A\;|\;x\;R\;a\}$\\
+\textbf{Properties:} We know that $(1)\;a \in [a]$, and $(2)\;a \neq \varnothing$, and $(3)\;\bigcup_{a \in A} [a] = A$.
+\subsection{Congruence Modulo N}
+\textbf{Definition:} $x,y \in \mathbb{Z}$ are congruence-modulo n $(x \equiv y(\text{mod}\;n))$ if $n|(x-y)$. For example, $3,13$ are CM $5$ but $3,16$ are not!
+\section{Functions}
+\subsection{Definitions}
+\textbf{Definition:} $f: A \rightarrow B \subset A \times B$, each element $a \in A$ appears exactly once as a first element. Or, $\forall a \in A\;\exists! b \in B\;\;b = f(a)$\\
+\textbf{Terminology:} $A$ is the domain of $f$, $B$ is the co-domain/image0, $b$ (image, could be a set!) and $a$ (pre-image)\\
+\textbf{Bipartite Graphs:} Vertices join elements of $A$ (domain) to elements of $B$ (co-domain).
+\subsection{Properties of Functions}
+\textbf{[1] Onto/Surjective Functions:} $f:A \rightarrow B$ provided ever element of $B$ has a pre-image.
+$$
+\;\forall b \in B,\;\exists a \in A,\;f(a) = b
+$$
+\textbf{[2] 1-to-1/Injective Functions:} $f$ provided that no element of $B$ is the image of $2$ distinct elements of $A$ using $f$.
+$$
+\forall a_1,a_2 \in A\;\;f(a_1) = f(a_2) \implies a_1 = a_2
+$$
+\textbf{[3] Bijective Functions:} If function is both surjective AND injective.
+\subsection{Compositions of Functions}
+\textbf{Definition:} Let $f: A \rightarrow B$ and $g: C \rightarrow D$, where $\text{im}(f) \subset C$. Then, $g \circ f: A \rightarrow D$ is defined as $g \circ f = g(f(x))$ \\
+\textbf{Properties:} (1) Compositioning $2$ onto/inj/bij functions$\implies$onto/inj/bij function
+\subsection{Inverse of Functions}
+\textbf{Definition:} For function $f: A \rightarrow B$, if there exists some $g: B \rightarrow A$ such that $g \circ f = f \circ g = I$, then $g = f^{=1}$.\\
+\textbf{Theorem:} If $f^{-1}$ exists, then $f$ is a bijection and the inverse is unique (iff).
+
+
+\pagebreak
+\section{Pigeonhole Principle}
+\subsection{Definitions}
+\textbf{[1] PHP:} If we have $n$ pigeons living in m holes with $n > m$, then at least one of the holds contains two or more pigeons. Also, for any function $f: A \rightarrow B$, if $|A| > |B|$, then $f$ cannot be injective.\\
+\textbf{[2] Generalized PHP:} If we have $n$ pigeons living in $m$ holes with $n \geq m$, then there is at least one hole containing at least $\lceil\frac{n}{m} \rceil$ pigeons. The ceiling functions is always defined by $x \leq \lceil x \rceil < x+1$.
+\subsection{Examples}
+\textbf{[1] Example:} $A = \{1,2,\dots,8\}$. If $5$ integers are selected from $A$, we must have at least one pair with sum $9$. There are four pairs of numbers that add to $9$, since we pick $5$ numbers, then our fifth number must complete a pair. Using the generalized PHP, we have $\lceil \frac{5}{4} \rceil = 2$ of the 5 numbers that sum up to $9$.\\
+\textbf{[2] Example:} In a group of $n$ people, at least $2$ people will have the same number of friends. Each person can have at most $n-1$ friends, which means that $\lceil \frac{n}{n-1} \rceil = 2$ people have the same number of friends.
+\subsection{PHP for Functions}
+\textbf{Definition:} A set is \underline{countable} iff there exists a bijection between the elements of the set and $\mathbb{N}$.\\
+\textbf{[1] Theorem:} If $f$ is one-to-one, then $|A| \leq |B|$. Or, if $|A| > |B|$, then $f$ is not one-to-one.\\
+\textbf{[2] Theorem:} If $f$ is onto, then $|A| \geq |B|$. Or, if $|A| < |B|$, then $f$ is not onto. 
+\section{Advanced Proofs}
+\textbf{[1] Weak Induction:} Base Case, Inductive Hypothesis, Inductive Step\\
+\textbf{[2] Smallest Counter-example:} Base Case, Smallest Counterexample, Contradiction\\
+\textbf{[3] Strong Induction:} Base Case, Inductive Hypothesis (all cases up to $n$). Inductive Step
+\section{Number Theory}
+\subsection{Definitions}
+\textbf{[1] Division:} For $a,b \in \mathbb{Z}$, we can always say that $a = bq + r$, $r \geq 0$. Since every $\mathbb{Z}$ is even or odd, $0\leq r < 2$. \\
+\textbf{[2] Theorem Modular:} We know that $a \equiv b\;\text{mod}\;n \iff a\;\text{mod}\;n = b \;\text{mod}\;n$.
+$$
+n|(a-b) \iff a \equiv b\;\text{mod}\;n \iff \exists k \in \mathbb{Z},\;a = b+kn
+$$
+\textbf{[3] Greatest Common Divisor:} GCD is unique, except where $a,b = 0$. We also know $\text{GCD}(a,b) = \text{GCD}(b,a)$.\\
+\textbf{[4] Prime Numbers:} The set of prime numbers if infinite. \\
+\textbf{[5] Fundamental Theorem of Arithmetic:} If $n \in \mathbb{Z}^+$, there exists a factorization of $n$ into a product of powers of primes.
+\subsection{Greatest Common Divisor}
+\textbf{[1] Euclid's Observation:} We know that $\text{GCD}(a,b) = \text{GCD}(b, a\;\text{mod}\;b)$\\
+\textbf{[2] Modular Operators:} Considered over the set $\mathbb{Z}_n = \{0,1,\dots,n-1\}$. EX: $a \oplus b = a + b\;\text{mod}\;n$ or $a \otimes b = a \times b\;\text{mod}\;n$\\
+\textbf{[3] Modular Equivalence P2:} We know that following property holds:
+$$
+ab \equiv (a\;\text{mod}\;n)(b\;\text{mod}\;n)\text{mod}\;n\;\;\text{   AND   }\;\;a^m \equiv (a\;\text{mod}\;n)^m\;\text{mod}\;n
+$$
+\textbf{[4] Modular Reciprocal:} $a$ is the modular reciprocal of $b \in \mathbb{Z}_n$ if $a \otimes b = 1$. Also, $a$ is invertible iff $\text{GCD}(a,n) = 1$.
+\subsection{Extended Euclid Algo:} Find the smallest combination of 431a + 29b. First, find the GCD(431,29). Then, work backwards to plug in our equivalences.
+$$
+\begin{cases}
+431 = 29 \times 14 + 25 \\
+29 = 25 \times 1 + 4 \\
+25 = 4 \times 6 + 1 \\
+\end{cases} \implies 
+\begin{cases}
+25 = 431 - 29 \times 14 \\
+4 = 29 - 25 \times 1 \\
+1 = 25 - 4 \times 6 \\
+\end{cases} \implies 
+\begin{cases}
+4 = 29 - (431 - 29 \times 14) \times 1\\
+4 = 29 \times 15 - 431 \\
+1 = (431 - 29 \times 14) - (29 \times 15 - 431) \times 6 \\
+1 = 431 \times 7 - 29 \times 104
+\end{cases}
+$$
+If we wanted to find the inverse of $x = 29$ in the space $\mathbb{Z}_{431}$, we use the algorithm to find its corresponding coefficient (-104). Turning this into a positive integer, we have $(-104 + 431) = 327$, our inverse. 
+
+\pagebreak
+\section{Counting}
+\subsection{Definitions}
+\textbf{[1] Permutations:} Order matters, $P(n,k) = \frac{n!}{(n-k)!}$\\
+\textbf{[2] Combinations:} Order doesn't matter, $C(n,k) = \frac{n!}{k!(n-k)!}$\\
+\textbf{[3] Binomial Theorem:} 
+$$
+(x+y)^n = \sum_{k=0}^n {n \choose k} x^{n-k}y^k
+$$
+\textbf{[4] Pascal's Identity:} 
+$$
+{n \choose k} = {n-1 \choose k-1} + {n - 1 \choose k}
+$$
+\subsection{Inclusion-Exclusion Principle}
+Note that the coefficients for these terms is often denoted by the number of combinations ${n \choose k}$ where $n$ is total number of groups and $k$ is the total number of groups selected as part of that.
+$$
+\left|\bigcup_{i = 1}^{n} A_i\right| = \sum_{i=1}^n |A_i| - \sum_{1 \leq i < j \leq n} |A_i \cap A_j| + \sum_{1 \leq i < j < k \leq n} |A_i \cap A_j \cap A_k| - \dots + (-1)^{n-1} |A_1 \cap \dots \cap A_n|
+$$
+
+\section{Graphs}
+\subsection{Definitions and Terminology}
+\textbf{[1] Graph:} Graph $G = (V,E)$ consists of two sets, $V$, set of vertices, and $E$, a set of edges.\\
+\textbf{[2] Edge:} An edge joins two vertices called its endpoints, denoted $\{u,v\}$ or $uv$. \\
+\textbf{[3] Simple Graph:} A simple graph is an undirected graph with not loops and no parallel edges.\\
+\textbf{[4] Adjacency:} Two vertices are adjacent if there is an edge joining them, also to say they are neighbors.\\
+\textbf{[5] Adjacency matrix:} A matrix of the graph $G = (V,E)$ on $V \times V$ such that:
+$$
+A_{ij} = \begin{cases}
+    1 & \text{if there is an edge connecting $v_i$ and $v_j$} \\
+    2 & \text{otherwise, no edge}
+\end{cases}
+$$
+\textbf{[6] Neighborhood:} Set of all neighbors of $v$ such that $N(v) = \{u \in V | \{u,v\}\}$\\
+\textbf{[7] Degree:} Number of neighbors of a vertex is called the degree, $d(v) = |N(v)|$. The max degree of graph $G$ is denoted $\Delta(G)$ and minimum is denoted $\delta(G)$.\\
+\subsection{Handshaking Theorem}
+\textbf{Definition:} The sum of the degrees of each vertex in a graph $G = (V,E)$ is equal to twice the number of edges. This also applies to non-simple graphs, except that loops would add degree two!
+$$
+\sum_{v \in V} d(v) = 2|E|
+$$
+\subsection{Types of Graphs}
+\textbf{[1] Complete Graph:} A graph with every pair of vertices joined by an edge. $K_n$ denotes this on $n$ vertices.\\
+\textbf{[2] Path Graph:} A path graph has vertices $\{v_1,v_2,\dots,v_n\}$ and edges $\{e_1,e_2,\dots,e_{n-1}\}$ such that edge $e_k$ joins $\{v_k,v_{k+1}\}$\\
+\textbf{[3] Cycle Graph:} Cycle graph is like a path graph except $\{v_1,v_n\}$ is connected also by an $\{e_n\}$.\\
+\textbf{[4] Bipartite Graph:} A graph with a vertex set which can be partitioned into two disjoint sets. Every edge joins a vertex in in $A$ with a vertex in $B$.\\
+\textbf{[5] Regular Graph:} A graph is regular provided every vertex has the same degree.
+\subsection{Isomorphism}
+\textbf{Definition:} Two graphs are isomorphic iff there exists a bijective fnction representing an isomorphism of $G$ to $H$.\\
+\textbf{Proving non-Iso:} (1) Number of vertices (2) number of edges (3) degrees (4) adjacencies (5) cycles (6) connected
+\subsection{Properties of Graphs}
+\textbf{[1] Subgraph:} A subgraph $H$ is a graph contained in another graph $G$. \\
+\textbf{[2] Spanning Subgraph:} $H$ is a spanning subgraph of $G$ if $V(G) = V(H)$ and $E(H) \subseteq E(G)$.\\
+\textbf{[3] Clique:} Subset of vertices $S \subset V(G)$ is a clique if any two distinct vertices are adjacent. Cliques of size $0,1$ also exist.\\
+\textbf{[4] Independent:} Subset of vertices S is called independent provided no two vertices in S are adjacent. \\
+\textbf{[5] Complement:} The complement is defined as follows: $V(\overline{G}) = V(G)$, but $E(\overline{G})$ connects all the vertices not connected and disconnects all previously connected. $E(\overline{G}) = \{uv|u,v \in V(G), u \neq v, uv \notin E(G)\}$ \\
+\textbf{[6] Walk:} Sequence of vertices where each vertex is adjacent to the next vertex. \\
+\textbf{[7] Path:} Walk in which no vertex is repeated. If there is a walk, then there is a path from $x$ to $y$. \\
+\textbf{[8] Hamiltonian Path:} A path containing all the vertices of a graph.\\
+\textbf{[9] Connection:} We say that $u$ is connected to $v$ iff there is a $(u,v)$-path in $G$. \\
+\textbf{[10] Connected Graph:} A graph where each pair of vertices is connected by a path.
