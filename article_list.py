@@ -70,6 +70,12 @@ math_article_list = {
         "author": "Connor Li",
         "title": "Prime Progression of the Form 3k+2",
         "publish-date": "2024-04-05"
+    },
+    "stokes-ex1": {
+        "filename": "stokes-ex1.txt",
+        "author": "Connor Li",
+        "title": "Example of Stokes Theorem",
+        "publish-date": "2024-05-20"
     }
 }
 
