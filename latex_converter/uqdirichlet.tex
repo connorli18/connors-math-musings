@@ -1,0 +1,27 @@
+
+\section{Uniqueness of Dirichlet Series}
+\subsection{Problem Statement}
+For $n \in \mathbb{N}$, assume that $a_n, \;b_n \in \mathbb{C}$ and $|a_n|,\;|b_n| \leq 1$. If for all $s \in \mathbb{C}$ where $\Re(s) > 1$, we have that
+$$
+\sum_{n=1}^\infty \frac{a_n}{n^s} = \sum_{n=1}^\infty \frac{b_n}{n^s}
+$$
+then show that $a_n = b_n$ for all $n \in \mathbb{N}$.
+\subsection{A Formal Proof}
+We start with the following assumption.
+$$
+\sum_{n=1}^\infty \frac{a_n}{n^s} = \sum_{n=1}^\infty \frac{b_n}{n^s} \implies \sum_{n=1}^\infty \frac{a_n - b_n}{n^s} = 0
+$$
+For the sake of contradiction, assume that there exists some $n_0$ such that $a_{n_0} \neq b_{n_0}$ and $n_0$ is minimal (for all $n < n_0$, $a_n - b_n = 0$). Isolate the term of the sum for when $n = n_0$, and to get a contradiction, we need to show the following is impossible for some $\Re(s) > 0$.
+$$
+\frac{a_{n_0} - b_{n_0}}{(n_0)^s} = \sum_{n= n_0 + 1}^\infty \frac{a_n - b_n}{n^s}
+$$
+Define $a_{n_0} - b_{n_0} = \alpha$ where $|\alpha| \leq 2$. Similarly, we can bound $|a_n - b_n| \leq 2$ for all $n$. Now, focus on the right hand side. At maximum, we have the following where $\alpha_2 = a_{n_0+1} - b_{n_0+2}$ and $s > n_0 + 2$.
+$$
+\sum_{n= n_0 + 1}^\infty \frac{a_n - b_n}{n^s} \leq \sum_{n=n_0 + 1}^\infty \frac{2}{n^s} < \int_{n_0+1}^\infty \frac{2}{x^s}\;dx + \frac{\alpha_2}{{n_0+1}^s} = \frac{2}{(s-1)(n_0+1)^{s-1}} + \frac{\alpha_2}{({n_0+1})^s} < \frac{2 + \alpha_2}{(n_0+1)^{s}}
+$$
+I claim that there exists some $s$ such that $\frac{\alpha}{(n_0)^s} > \frac{2 + \alpha_2}{(n_0+1)^{s}}$. This is also to say that the limit below approaches $\infty$.
+\begin{align*}
+    \lim_{s\rightarrow\infty}\frac{\frac{\alpha}{(n_0)^s}}{\frac{2 + \alpha_2}{(n_0+1)^{s}}} = \lim_{s\rightarrow\infty}\frac{\alpha}{2+ \alpha_2} \cdot \left(1 + \frac{1}{n_0}\right)^s = \infty
+\end{align*}
+Thus, we have a contradiction and $a_n = b_n$ for all $n \in \mathbb{N}$. 
+\end{document}

@@ -76,6 +76,18 @@ math_article_list = {
         "author": "Connor Li",
         "title": "Example of Stokes Theorem",
         "publish-date": "2024-05-20"
+    },
+    "uqdirichlet": {
+        "filename": "uqdirichlet.txt",
+        "author": "Connor Li",
+        "title": "Uniqueness of Dirichlet Series",
+        "publish-date": "2024-03-12"
+    },
+    "surfareacalciv": {
+        "filename": "surfareacalciv.txt",
+        "author": "Connor Li",
+        "title": "Surface Area of an Unknown Solid",
+        "publish-date": "2024-05-21"
     }
 }
 
