@@ -1,0 +1,74 @@
+\section{Important ODE Equations}
+\subsection{Linear ODEs, Non-constant Coefficients}
+(1) Scalar first order, homogenous
+$$
+\begin{cases}
+\dot{x} = a(t)x(t)\\
+x(t_0) = x_0 
+\end{cases} \implies \quad x(t) = \exp\left(\int_{t_0}^t a(s)\;ds\right)x_0
+$$
+(2) Scalar, first order, non-homogenous
+$$
+\begin{cases}
+\dot{x} = a(t)x(t) + b(t) \\
+x(t_0) = x_0
+\end{cases} \implies \quad x(t) = \exp\left(\int_{t_0}^t a(u)\;du\right)\left[x_0 + \int_{t_0}^t\exp\left(\int_{t_0}^s a(u)\;du\right)b(s)\;ds \right]
+$$
+(3) $1^{\text{st}}$ order systems (upper triangular form)
+$$
+\begin{cases}
+    \dot{u}(t) = A(t)u(t) \\
+    u(t_0) = u_0 \in \mathbb{R}^m
+\end{cases} \implies \quad \text{Solve $u_1$ and $u_2$ as system!}
+$$
+(4) Systems with commuting matrices
+$$
+[A(t_1),A(t_2)] = A(t_1)A(t_2) - A(t_2)A(t_1) = 0 
+$$
+$$
+\begin{cases}
+    \dot{u}(t) = A(t)u(t) \\
+    u(0) = u_0 \in \mathbb{R}^m
+\end{cases} \implies \quad u(t) = \exp\left(\int_0^t A(s)\;ds\right) u_0
+$$
+(5) Higher order, scalar ODEs (Euler equation)
+$$
+t^nx^{(n)}(t) + t^{n-1}a_{n-1}x^{(n-1)}(t) + \dots + ta_{1}\dot{x}(t) + a_0x(t) = 0
+$$
+$$
+\text{Substitute}\;y(s) = x(\exp(s))\;\;\text{or}\;\;x(t) = t^\alpha
+$$
+\subsection{Non-Linear ODEs}
+(1) Separable Equations 
+$$
+\begin{cases} \dot{x}(t) = g(t)x(t) \\
+x(t_0) = x_0 \in \mathbb{R}
+\end{cases} \implies \frac{\dot{x}(t)}{x(t)} = g(t) \implies \int_{t_0}^t \frac{dx}{x(t)} = \int_{t_0}^t t\;dt 
+$$
+(2) Bernoulli Equation 
+$$
+y'(x) + a(x)y(x) = b(x)y^n
+$$
+$$
+u(x) = y^{1-n}(x) \implies u'(x) = (n-1)a(x)u(x) + (1-n)b(x)
+$$
+(3) Riccati Equation
+$$
+y'(x) = a_0(x) + a_1(x)y(x) + a_2(x)y^2(x)
+$$
+$$
+R(x) = a_1(x) + \frac{a'_2(x)}{a_2(x)},\;S(x) = a_0(x)a_2(x) \implies u''(x) - R(x)u'(x) + S(x)u(x) = 0
+$$
+(4) Exact Equation
+$$
+\begin{cases}
+    y^2(x) + 2x + 2xy(x)y'(x) = 0\\
+    y(1) = 1
+\end{cases}
+$$
+$$
+\psi(u,v) = u^2 + uv^2 \implies \psi_u(u,v) = 2u+v^2\;\text{and}\;\psi_v(u,v) = 2uv
+$$
+$$
+\frac{d}{dx}U(x) = \psi_u(u,v) + \psi_v(u,v) \cdot y'(x) = 0 \implies U(x) = x^2 + xy^2(x)
+$$

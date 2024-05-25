@@ -1,0 +1,102 @@
+\section{NLP Cheatsheet - Final Exam}
+\textbf{$[$0$]$ HMM} (1) Finite num states (2) Probabilistic transitions (3) Next state determined only by the current state, Markov property (4) Unsure which state we’re in, current state emits observation \\
+\\
+\underline{Viterbi Algorithm:} Dynamic programming algo that [1] sets up probability matrix for each state given observation [2] update matrix for every new observation, calculating based on previous states \& observation probabilities [3] Determine the most probable sequence of states by tracing the path with the highest matrix prob.\\
+\\
+\underline{Baye's Rule}:
+$$
+P(c = \text{POS}|\text{good}) = \frac{P(c = \text{POS}) \cdot P(\text{good}|c = \text{POS})}{P(\text{good})}
+$$
+$$
+\includegraphics[width=9.5cm]{Screen Shot 2023-12-17 at 5.35.27 PM.png}
+$$
+\textbf{$[$1$]$ RNN:} Feed-forward networks that are rolled out over time, slow to train, vanishing gradient problem for long seq\\
+\textbf{$[$2$]$ LSTM:} Made to solve vanishing gradient, has branch that allows passing information to skip the long processing of the current cell, branch allows NN to retain memory for a longer, still suffers from vanishing gradient for complex seq\\
+\textbf{$[$3$]$ Transformers:} Uses self-attention, can pass all the words in seq (parallelization to use GPUs) and determine the word embedding simultaneously, encoder passes all states (even hidden ones) to decoder. Compared to RNN, transformers have residual connections; intuitively, their summation operations ``form a path'' in the computation graphs where the gradient does not get lost. \\
+\\
+\textbf{$[$4$]$ Encoder:}
+\begin{enumerate}
+    \item \underline{Multi-headed attention}: Focuses on how relevant a particular word is wrt other words in the sentence, represented as an attention vector. Multiple attention vectors per word and weighted average to compute the final attention vector of every word.
+    \item \underline{Feed-forward network}: Transform the attention vectors into a form that is acceptable to the next encoder or decoder layer, attention vectors are independent so we can parallelize
+\end{enumerate}
+\textbf{[5] Decoder}:
+\begin{enumerate}
+    \item \underline{Masked multi-head attention}: Hide future words so model only considers input seq and already generated target (English seq and partial French seq). While parallelizing, the matrix is modified by``masking" - turning attention scores into $0$'s for future words (no info leak).
+    \item \underline{Feed-forward, Softmax}: takes the attention-informed representation of the input and transforms it into a probability distribution for next words in target seq, using non-linear softmax
+\end{enumerate}
+\textbf{[6] Decoder (pre-output)}:
+\begin{enumerate}
+    \item Checks each hidden state received since every HS is mostly associated with a particular word of the input sentence AND gives each HS a score.
+    \item Each score is multiplied by its respective softmax score, amplifying hidden states with high scores and drowning out hidden states with low scores.
+\end{enumerate}
+\textbf{[7] The Larger Process (decoder):}
+\begin{enumerate}
+    \item Start with the embedding of the $\langle$END$\rangle$ token. Initialize with the first decoder hidden state. RNN processes and produces HS $h4$.
+    \item Use $h4$ vector and encoder hidden states to calculate context vector $C4$, which captures the relevant parts of the input seq for this specific time step. Then, combine the $h4$ and $C4$ vectors.
+    \item Pass this new vector into the feed-forward NN, which will make predictions for next words in target seq. Repeat for every subsequent word.
+\end{enumerate}
+\textbf{[8] Character vs. Word Tokenization}: Character-based toeknization allows for a greatly reduced memory and time complexity during computation (since there are less characters). During model training and inference, you will see fewer out-of-vocabulary (OOV) instances; you can always represent unseen words with their character encodings. However, the trade-off is with semantic meaning and relationships between words, which is often lost in character-based tokenizations.\\
+\\
+\textbf{[9] K-Beam Search}: Beam-search keeps a $k$ number of beams (a hyperparameter), or options, at each time step, picking the most probable overall sequences based on their joint probabilities. At each time step, only $k$ beams are kept; sequences with lower joint probabilities are pruned. Better than greedy for longer, more probable sequences.\\
+\\
+\textbf{[10] Autoregressive Model}: No encoder, these models often consist of a single stack of transformer layers (like GPT models), handling both the understanding of input context and the generation of output sequentially. Generate output tokens one at a time, they use embeddings, positional encodings to convert words into vectors and understand their sequence. Prompts look like ``Input: Hello World! Output: '' whereas encoder decoders are simply ``Hello World''. It's also possible to structure all NLP tasks so that an autoregressive model clutches up. \\
+\\
+\textbf{[11] Summarization}: [1] Informative (Replacing a document) vs. Indicative (describing the contents of a document) [2] Extractive (Choosing bits of the source) vs. Generative (abstractive) (generating something new) [3] Single document vs. Multi Document [4] Generic vs. user-focused
+\begin{itemize}
+    \item \underline{Difficulties}: Requires both interpretation and generation of text, handle input documents from unrestricted domains robustly, operate without full semantic interpretation, sentence selection seems optimal
+    \item \underline{Types}: Extraction (selection) is not optimal since it can be misleading with extraneous phrases and dangling noun phrases and pronouns. Cut \& Paste: [1]  Sentence compression [2] Sentence fusion [3] Syntactic transformation [4] Lexical paraphrasing. Attention-based (ABS) performs abstractive summarization (Paraphrasing, compression)
+\end{itemize}
+\textbf{[12] BART}: Originated from BERT (Bidirectional Encoder Representations from Transformers). BART (Bidirectional and Auto-Regressive Transformers). Uses a bidirectional encoder and left-to-right autoregressive decoder (like GPT). Learns a model to reconstruct original text from corrupted noisy text. It is pre-trained on noisy documents; optimizes cross-entropy loss between decoder output and original (reconstruction).
+\begin{itemize}
+    \item \underline{Types of Noise}: [1] Token masking (fill in the blank), MLM from BERT [2] Token Deletion, deleting random tokens from input (model decides what is missing) [3] Text infilling, replaces spans with single $\langle\text{MASK}\rangle$ token and model decides how many tokens are missing. [4] Sentence Permutation, shuffles sentences [5] Document Rotation, starts at some random point in the document and model decides where start token is
+\end{itemize}
+\textbf{[13] Spoken Dialog Systems}: ASR (automatic speech recognizer) turns speech to text, TTS (text to speech), Recognition, Language Understanding (understanding purpose/intent of comm) converts words to structure, Manipulation of utterances (reformulating user input, clarification, simplification, adapting), Generation of new information (retrieve information relevant to convo), Text generation (coherent response), Synthesis (converting text to speech)
+\begin{itemize}
+    \item \underline{The Process}: ASR $\rightarrow$ Language Understanding $\rightarrow$ Dialog Manager $\rightarrow$ Language Generation $\rightarrow$ Synthesis
+    \item \underline{Dialog Manager}: State of dialog (who is talking), Direction of dialog (what next), References (user profile, etc.), Interaction of database/internet (generative ability) $\implies$ Language generation then turns those structures to words. The DM also has to stall the user while querying for database information, and deal with barge-in! Some decisions include: When to ask open/directive questions? When to confirm? When to barge-in/wait? Which type of feedback to provide (intelligent tutoring system)? 
+    \item \underline{Parsing vs LM}: [1] Language Models are to generate and understand human language. They predict likelihood of sequence of words (modeling what is naturally said/written) [2] Parsing is analyzing an input sequence to understand grammatical structure and extract meaningful info [3] Models can be *shared*, utilized fro both generating and parsing text [4] Parsing is usually reliant on predefined set of grammar rules, so it doesn't do well with OOG sentences. As a result, only relying on grammatical rules while parsing can be bad and very limiting!
+    \item \underline{SLUs}: Spoken Language Understanding involves systems that learn from user interaction. [1] Non-Expert involvement, since regular interactions with human users can provide more training examples (more diverse set of inputs) [2] Active Learning, system can ask users from clarifications/confirmation when it's unsure, which can help reduce the need for large labeled dataset upfront
+    \item \underline{Frame Based Dialog Manager}: Used for transaction dialog, Central DS is a frame with slots, and the DM is trying to fill in slots. Allows mixed initiative (where both interactants can lead the convo), Allows over-answering (users can provide more info that currently ask, date AND destination of travel ex.)
+    \begin{itemize}
+        \item \underline{Problems}: Not applicable to complex tasks (not a single frame, dynamic construction of info, user access to product)
+        \item \underline{Agenda}: Dialog system is organized into hierarchy of frames. Agenda is maintained to determine what needs to be addressed in convo. Handlers are functions used to manage each topic or perform specific actions.
+    \end{itemize}
+    \item \underline{Statistical Approach to DM} (no scripting): [1] Statistical approaches allow DM to handle variations in human convos [2] Optimal Decision making, find optimal path in complex dialog scenarios [3] Life-long learning, allow system to learn from interactions over time, adapting to new patterns in dialogue
+    \item \underline{Policy Search:} a dialogue policy dictates how the system should respond in various situations based on the current state of the dialogue. Policy space is often HUGE!
+    \begin{itemize}
+        \item \underline{Problems}: [1] Number of policies grows exponentially with the complexity of dialogue system. [2] Insufficient data to train or evaluating every possible policy, so gathering large datasets are challenging
+    \end{itemize}
+    \item \underline{DM as Markov Decision}: Dialog is viewed as a sequence of states in a state space. Policy is the strategy that dictates system actions, reward determines policy, which is cumulative measure of effectiveness. States are specific points in dialog (info). 
+    \begin{itemize}
+        \item \underline{Actions}: Actions are moves the system can make. Examples include confirming info, rejecting response, querying database, etc.
+        \item \underline{Transition \& Reward function}: Transition function estimates probability from one state to another $p(s' | s,a))$, modeled using data from real-time convos. Reward function measures effectiveness or goodness of dialog (PARADISE for eval), assigns small negative reward for non-terminal states which encourages efficiency.
+    \end{itemize}
+    \item \underline{Grounding}: the process by which the system and the user establish a mutual understanding of the conversation's content. An example is ``Right. Where ... Boston, right.'' Makes the conversation seem more genuine and human-like!
+    \item \underline{Designing Prompts}: Constrain your questions, depending on the type of answer that you are looking for. Long Story Reply: ``How many I help you?'' Exact Reply: ``Which bus numbers do you want schedules for?''
+\end{itemize}
+\textbf{[14] Bias}: Word embeddings encode semantic analogies and bias! 
+\begin{itemize}
+    \item \underline{WEAT Test}: Two sets of target words ([set1] engineer, scientist [set2] nurse, librarian), two sets of attribute words (male, female). This test sees cos similarity between words and determines the classification for attributes.
+    \item \underline{Relevant Results}: [1] Women are associated with more home-oriented words, men with career oriented words [2] Words can also be driven by cultural connotation [3] The Double Bind: if women succeed in a male dominated job, they are perceived less likeable and more hostile than similarly performing men
+    \item \underline{Debiasing:} Pre-processing (edit data before), post-processing (most popular where you remove after training), in-processing. However, even hard-debiasing does not show much improvement but KNN can determine more bias.
+    \item \underline{Types of Bias}: Demographic bias (over/under-represents certain groups), Cultural bias (cultural stereotypes in training data), Linguistic biases (low-resource languages excluded), Temporal Bias (limited time periods), Confirmation bias, Ideological \& Political Bias 
+\end{itemize}
+\textbf{Example Problem:} 300 (+), 700 (-)
+$$
+\begin{tabular}{c|c|c}
+    good  & $900$ &$400$ \\
+    bad  & $600$& $400$ \\
+    Total &  $10000$&$50000$ 
+\end{tabular}
+$$
+\begin{align*}
+    P(c = \text{POS}|\text{good}) &= \frac{0.3 \cdot 0.09}{0.3 \cdot 0.09 + 0.7 \cdot 0.008}\\
+    P(c = \text{POS}|\text{good,bad}) &= \frac{0.3 \cdot 0.09 \cdot 0.06}{0.3 \cdot 0.09 \cdot 0.06 + 0.7 \cdot 0.008 \cdot 0.008}
+\end{align*}
+\begin{align*}
+    P(c = \text{NEG}|\text{good}) &= 1 - P(c = \text{POS}|\text{good}) \\
+    P(c = \text{NEG}|\text{good,bad}) &= 1 - P(c = \text{POS}|\text{good,bad}) 
+\end{align*}
+
+
+\end{document}

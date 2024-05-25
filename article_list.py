@@ -88,6 +88,24 @@ math_article_list = {
         "author": "Connor Li",
         "title": "Surface Area of an Unknown Solid",
         "publish-date": "2024-05-21"
+    },
+    "numbtheorycompintegral" : {
+        "filename": "numbtheorycompintegral.txt",
+        "author": "Connor Li",
+        "title": "Example of the Residue Theorem: Number Theory",
+        "publish-date": "2024-03-22"
+    },
+    "grouptheoryp1": {
+        "filename": "grouptheoryp1.txt",
+        "author": "Connor Li",
+        "title": "Problem on Properties of Groups",
+        "publish-date": "2023-10-22"
+    },
+    "odeequations": {
+        "filename": "odeequations.txt",
+        "author": "Connor Li",
+        "title": "Important ODE Formulas",
+        "publish-date": "2023-05-22"
     }
 }
 
@@ -115,5 +133,23 @@ cs_article_list = {
         "author": "Connor Li",
         "title": "Lake of Trout: A Dynamical System",
         "publish-date": "2023-11-10"
+    },
+    "langreg": {
+        "filename": "langreg.txt",
+        "author": "Connor Li",
+        "title": "Problem of Language Regularity",
+        "publish-date": "2023-11-20"
+    },
+    "nlpcheatsheet": {
+        "filename": "nlpcheatsheet.txt",
+        "author": "Connor Li",
+        "title": "Natural Language Processing Cheat Sheet",
+        "publish-date": "2023-12-14"
+    },
+    "aicheatsheet": {
+        "filename": "aicheatsheet.txt",
+        "author": "Connor Li",
+        "title": "Artificial Intelligence Cheat Sheet",
+        "publish-date": "2023-12-15"
     }
 }

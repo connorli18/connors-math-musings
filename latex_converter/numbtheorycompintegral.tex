@@ -1,0 +1,73 @@
+\section{Residue Theorem & Complex Integration}
+\subsection{Problem Statement}
+For any $\sigma > 0$ and $k \in \mathbb{N} \backslash \{0\}$, evalute the following integral.
+$$
+\frac{1}{2\pi i} \int_{\sigma - i\infty}^{\sigma + i\infty} \frac{x^s}{s(s+1)\cdots(s+k)}\;ds
+$$
+\subsection{A Formal Proof}
+For this problem, we will employ the residue theorem on $3$ distinct cases. Let's consider the first case (where $|x| > 1$). To evaluate, construct the following box contour $\gamma$ composed of the following.
+\begin{itemize}
+    \item $\gamma_{1}:$ Vertical line from $\sigma - iT$ to $\sigma + iT$
+    \item $\gamma_{2}:$ Horizontal line from $\sigma + iT$ to $- R + iT$ where $R \in \mathbb{R}^+$
+    \item $\gamma_{3}:$ Vertical line from $-R + iT$ to $-R - iT$
+    \item $\gamma_4:$ Horizontal line from $-R - iT$ to $\sigma - iT$
+\end{itemize}
+Using this contour, we can apply the residue theorem to get the following expression utilizing $\gamma_n$.
+\begin{align*}
+    \frac{1}{2\pi i} \int_{\gamma} \underbrace{\frac{x^s}{s(s+1)\cdots(s+k)}\;}_{f(s)}ds &= \sum_{z_0} \text{Res}(f,z_0) \\
+    \frac{1}{2\pi i} \left(\int_{\gamma_1} f(s)\;ds + \int_{\gamma_2} f(s)\;ds + \int_{\gamma_3} f(s)\;ds + \int_{\gamma_4} f(s)\;ds \right)&= \sum_{n=0}^k \frac{x^{-n}}{n!(k-n)!} (-1)^n\\
+\end{align*}
+First, consider $\gamma_3$ and take $R \rightarrow \infty$. 
+$$
+\lim_{R\rightarrow \infty} \mathcal{O}(f(s)) = \lim_{R\rightarrow \infty} x^{-R} = 0 \implies \lim_{R\rightarrow\infty} \int_{\gamma_{3}} f(s)\;ds = 0
+$$
+Similarly, take $\gamma_2$ and set $T\rightarrow \infty$.
+$$
+\lim_{T\rightarrow\infty} \frac{x^{d}x^{-iT}}{(d - iT)(d + 1 - iT)\cdots(d+k - iT)} = 0 \implies \lim_{T\rightarrow \infty} \int_{\gamma_2} f(s)\;ds = 0
+$$
+We can symmetrically do the same process for $\gamma_4$ where we set $T \rightarrow \infty$ to make the denominator of $f(s)$ grow comparatively faster and sending $\lim_{T\rightarrow\infty} \int_{\gamma_4} f(s)\;ds = 0$. Thus, we have the following expression.
+\begin{align*}
+    \frac{1}{2\pi i} \left(\int_{\gamma_1} f(s)\;ds + \int_{\gamma_2} f(s)\;ds + \int_{\gamma_3} f(s)\;ds + \int_{\gamma_4} f(s)\;ds \right)&= \sum_{n=0}^k \frac{x^{-n}}{n!(k-n)!} (-1)^n\\
+    \frac{1}{2\pi i} \left(\int_{\gamma_1} f(s)\;ds\right) + \underbrace{0}_{\gamma_2} + \underbrace{0}_{\gamma_3} + \underbrace{0}_{\gamma_4} &= \sum_{n=0}^k \frac{x^{-n}}{n!(k-n)!} (-1)^n\\
+    \int_{\sigma - i\infty}^{\sigma + i\infty} \frac{x^s}{s(s+1)\cdots(s+k)}\;ds&= \sum_{n=0}^k \frac{x^{-n}}{n!(k-n)!} (-1)^n
+\end{align*}
+To consider the case where $|x| < 1$, let's use some contour $C_0$.
+\begin{itemize}
+    \item $C_{1}:$ Vertical line from $\sigma + iT$ to $\sigma - iT$
+    \item $C_{2}:$ Horizontal line from $\sigma - iT$ to $R - iT$ where $R \in \mathbb{R}^+$
+    \item $C_3:$ Vertical line from $R-iT$ to $R + iT$
+    \item $C_4:$ Horizontal line from $R + iT$ to $\sigma + iT$
+\end{itemize}
+\pagebreak
+Using this contour, we can apply the residue theorem to get the following expression utilizing $C_n$.
+\begin{align*}
+    \frac{1}{2\pi i} \int_{C_0} \underbrace{\frac{x^s}{s(s+1)\cdots(s+k)}\;}_{f(s)}ds &= \sum_{z_0} \text{Res}(f,z_0) \\
+    \frac{1}{2\pi i} \left(\int_{C_1} f(s)\;ds + \int_{C_2} f(s)\;ds + \int_{C_3} f(s)\;ds + \int_{C_4} f(s)\;ds \right)&= 0
+\end{align*}
+First, consider the $C_3$ and take $R \rightarrow \infty$.
+$$
+\lim_{R\rightarrow \infty} \mathcal{O}(f(s)) = \lim_{R\rightarrow \infty} x^{R} = 0 \implies \lim_{R\rightarrow\infty} \int_{C_{3}} f(s)\;ds = 0
+$$
+Similarly, take $C_2$ and set $T\rightarrow \infty$.
+$$
+\lim_{T\rightarrow\infty} \frac{x^{d}x^{-iT}}{(d - iT)(d + 1 - iT)\cdots(d+k - iT)} = 0 \implies \lim_{T\rightarrow \infty} \int_{\gamma_2} f(s)\;ds = 0
+$$
+We can symmetrically do the same process for $C_4$ where we set $T \rightarrow \infty$ to make the denominator of $f(s)$ grow comparatively faster and sending $\lim_{T\rightarrow\infty} \int_{\gamma_4} f(s)\;ds = 0$. Thus, we have the following expression.
+\begin{align*}
+    \frac{1}{2\pi i} \left(\int_{C_1} f(s)\;ds + \int_{C_2} f(s)\;ds + \int_{C_3} f(s)\;ds + \int_{C_4} f(s)\;ds \right)&= 0\\
+    \frac{1}{2\pi i} \left(\int_{C_1} f(s)\;ds\right) + \underbrace{0}_{C_2} + \underbrace{0}_{C_3} + \underbrace{0}_{C_4} &= 0\\
+    -\int_{\sigma - i\infty}^{\sigma + i\infty} \frac{x^s}{s(s+1)\cdots(s+k)}\;ds &= 0
+\end{align*}
+Finally, consider the case where $|x| = 1$. 
+\begin{align*}
+    \int_{\sigma - i\infty}^{\sigma + i\infty} \frac{1}{s(s+1)\cdots(s+k)}\;ds = 0
+\end{align*}
+It's essentially the same calculation (as the above scenarios), where we can choose either contour $C_0$ or $\gamma$ and arrive at the same conclusion with $\frac{1}{2\pi i} \int f(s)\;ds = 0$. This is because of the following property.
+\begin{align*}
+     \lim_{\sigma \rightarrow \infty} \int_{-\infty}^{\infty} \frac{1}{(\sigma + it)(\sigma + 1 + it) \cdots (\sigma + k + it) }\;dt &=  \int_{-\infty}^{\infty} \lim_{\sigma \rightarrow \infty} \frac{1}{(\sigma + it)(\sigma + 1 + it) \cdots (\sigma + k + it) }\;dt\\
+     &= 0
+\end{align*}
+As a sanity check, we can show the following result.
+$$
+\sum_{n=0}^k \frac{1}{n!(k-n)!} (-1)^n = 0
+$$
