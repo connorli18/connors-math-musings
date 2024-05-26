@@ -151,5 +151,17 @@ cs_article_list = {
         "author": "Connor Li",
         "title": "Artificial Intelligence Cheat Sheet",
         "publish-date": "2023-12-15"
+    },
+    "pumplemmareg": {
+        "filename": "pumplemmareg.txt",
+        "author": "Connor Li",
+        "title": "Example of Pumping Lemma for Regular Languages",
+        "publish-date": "2023-11-23"
+    },
+    "dfareglang": {
+        "filename": "poo.txt",
+        "author": "Connor Li",
+        "title": "Example of DFA for Regular Languages",
+        "publish-date": "2023-11-23"
     }
 }
