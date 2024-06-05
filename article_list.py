@@ -106,6 +106,12 @@ math_article_list = {
         "author": "Connor Li",
         "title": "Important ODE Formulas",
         "publish-date": "2023-05-22"
+    },
+    "dirichletasbound": {
+        "filename": "dirichletasbound.txt",
+        "author": "Connor Li",
+        "title": "Asymptotic Bound of Dirichlet L-Functions",
+        "publish-date": "2024-06-04"
     }
 }
 

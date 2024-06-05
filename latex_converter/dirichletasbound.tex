@@ -1,0 +1,28 @@
+
+\section{Asymptotic Bounds for Dirichlet L-functions}
+\subsection{Problem Statement}
+Let $\chi$ be a non-trivial Dirichlet character $\text{mod } q$. Prove that $L(1,\chi) \ll \log(q)$.
+\subsection{A Formal Proof}
+First, we have the following for the Dirichlet character $\text{mod } q$. 
+\begin{align*}
+L(1,\chi) = \sum_{n=1}^\infty \frac{\chi(n)}{n} &= \underbrace{\sum_{1 \leq n \leq q^3} \frac{\chi(n)}{n}}_{S_1} + \underbrace{\sum_{q^3 < n} \frac{\chi(n)}{n}}_{S_2}
+\end{align*}
+Let's first evaluate $S_1$. Since $\left|\chi(n)\right| = 1$ for all $n$, we can use a modified version of the integral test to show
+\begin{align*}
+S_1 = \sum_{1 \leq n \leq q^3} \frac{\chi(n)}{n} \leq \frac{1}{1} + \int_1^{q^3} \frac{1}{x} dx = 1 + \log(q^3) = 3\log(q) + 1
+\end{align*}
+Now, let's evaluate $S_2$ using summation by parts where we define $A(n) = \sum_{m=1}^n \chi(m)$. 
+\begin{align*}
+S_2 &= \lim_{N\rightarrow \infty} \sum_{n = q^3 + 1}^N \frac{\chi(n)}{n} \\
+&= \lim_{N\rightarrow \infty} \left[ \frac{A(N)}{N} - \underbrace{\frac{A(q^3)}{q^3 + 1}}_{< M_q} +\sum_{q^3 < n < N} \left(\frac{A(n)}{n} - \frac{A(n)}{n+1}\right)\right]\\
+&\leq \lim_{N\rightarrow \infty} \left[ \sum_{q^3 < n < N} \frac{A(n)}{n^2}  \right] + M_q\\ 
+&\leq \frac{q}{q^3} + \int_{q^3}^\infty \frac{q}{x^2} \;dx + M_q\\
+&= \frac{2}{q^2} + M_q
+\end{align*}
+Thus, we have the following bound for $L(1,\chi)$.
+\begin{align*}
+  L(1,\chi) &\leq 3\log(q) + 1 + \frac{2}{q^2} + M_q\\
+  &\ll \log(q)
+\end{align*}
+
+\end{document}
