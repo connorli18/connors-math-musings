@@ -1,4 +1,10 @@
 math_article_list = {
+    "introtoalgebra": {
+        "filename": "introtoalgebra.txt",
+        "author": "Connor Li",
+        "title": "Introduction to Algebra Concepts",
+        "publish-date": "2024-09-11"
+    },
     "FTCNotes": {
         "filename": "test.txt",
         "author": "Connor Li",
@@ -112,6 +118,12 @@ math_article_list = {
         "author": "Connor Li",
         "title": "Asymptotic Bound of Dirichlet L-Functions",
         "publish-date": "2024-06-04"
+    },
+    "funddomain_nt": {
+        "filename": "funddomain_nt.txt",
+        "author": "Connor Li",
+        "title": "Problem on Fundamental Domains of a Modular Group",
+        "publish-date": "2024-06-05"
     }
 }
 

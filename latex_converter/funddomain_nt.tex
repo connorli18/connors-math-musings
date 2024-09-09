@@ -1,0 +1,32 @@
+
+
+\pagebreak
+\section{Problem On Fundamental Domains in Number Theory}
+\subsection{Problem Statement}
+Let $\mathfrak{h} = \{z = x + iy\;:\; x \in \mathbb{R},\;y > 0\}$ and let $f : \mathfrak{h} \to \mathbb{C}$ be a holomorphic modular form of weight $0$ for $SL(2,\mathbb{Z})$.\\
+\\
+Show that every element in $\mathfrak{h}$ is $SL(2,\mathbb{Z})$ equivalent to some element $z = x + iy$ with $y \geq \frac{\sqrt{3}}{2}$. Then, deduce that $|f|$ takes maximum on $\mathfrak{h}$ and show that the only holomorphic modular forms of weight zero are constant functions.
+\subsection{A Formal Proof}
+By definition, we know that the fundamental domain for the action of $SL(2,\mathbb{Z})$ on the upper-half plane $\mathfrak{h}$ is the set of points for which $|z| > 1$ and $-\frac{1}{2} < \Re(z) \leq \frac{1}{2}$. 
+By definition of a fundamental domain, we have that every element in $\mathfrak{h}$ is equivalent to some element $z$ in the fundamental domain under $SL(2,\mathbb{Z})$.\\
+\\
+Given $z = x + iy$ with $|z| > 1$, the condition implies that the points $z$ on the boundary $|z| = 1$ will have the minimum value of $y$ when $x = \pm \frac{1}{2}$. This is because, on the complex unit circle, the points at $x = \pm \frac{1}{2}$ are exactly at the height of $\frac{\sqrt{3}}{2}$ above the real axis, corresponding to complex numbers $e^{\frac{i\pi}{3}}$ and $e^{\frac{2i\pi}{3}}$.\\
+\\
+Therefore, within the fundamental domain, any point $z$ will satisfy $y \geq \frac{\sqrt{3}}{2}$. This can be seen geometrically (which was also shown in class). By the properties of the fundamental domain, we have thus proven the statement that every element in $\mathfrak{h}$ is equivalent to some element $z = x+iy$ in the fundamental domain under $SL(2,\mathbb{Z})$ where $y \geq \frac{\sqrt{3}}{2}$.\\
+\\
+Now, let's prove that $f$ is bounded as $y \rightarrow \infty$. Consider its Fourier expansion at the cusp $\infty$.
+$$
+f(z) = \sum_{n=0}^\infty a_n e^{2\pi i n z} = \sum_{n=0}^\infty a_n e^{2\pi i n x} e^{-2\pi n y} = a_0 + \sum_{n=1}^\infty a_n e^{-2\pi n y}
+$$
+If we take the limit as $y \rightarrow \infty$, at the cusp, we have
+$$
+\lim_{y\rightarrow \infty} f(z) = a_0 + \lim_{y\rightarrow \infty} \sum_{n=1}^\infty a_n e^{-2\pi n y} = a_0
+$$
+This proves that $f$ is bounded as $y \rightarrow \infty$.\\
+\\
+Since $f$ is of weight $0$, we have that $f$ is invariant under the action of $SL(2,\mathbb{Z})$. 
+Related to the invariance, this means that $f$ is periodic with period $1$ since it is invariant under action $z \mapsto z + 1$. 
+Thus, we only need to consider the vertical strip defined by $|\Re(z)| \leq \frac{1}{2}$ since any point in $\mathfrak{h}$ can be translated into this strip. \\
+\\
+Given our previous result that $f$ is bounded as $y \rightarrow \infty$, we can show that $f$ is bounded in the vertical strip for all heights $y$ (where we then apply periodicity to show boundeness on $\mathfrak{h}$). This is because we can construct two compact sets, one around the cusp and a bounded height strip, which are both compact. Since $|f|$ is continuous on a compact interval, it has a maximum. Finally, by the maximum modulus principle, we have that $f$ has a maximum in $\mathfrak{h}$, which means that $f$ is constant over $\mathfrak{h}$.
+
