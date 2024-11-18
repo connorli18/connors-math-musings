@@ -1,0 +1,37 @@
+\section{An Interesting Problem on Number Theory}
+\subsection{Problem}
+
+Imagine you have a function $f(n)$ with the following definition:
+$$
+f(n) = \text{the number of $1$'s if you write all the numbers from $1$ to $n$}
+$$
+You can imagine that $f(1) = 1$ and $f(2) = 1$. Once we get to $n = 10$, we have that $f(10) = 2$ and $f(11) = 4$. \\
+\\
+The question we are interested in answering is whether or not it's ever the case where $f(n) > n$. How will you prove this?
+
+\subsection{Proof}
+Let's start by thinking with some arbitrary $n$. 
+\begin{itemize}
+\item If you take the "one's place," we know that at there are at least $\frac{n}{10}$ "ones". 
+\item If you then consider the 100's place, we know that there are $\frac{n}{100}$ cycles of digits, and since there are 10 "ones" in every cycle of 100, we know that there are an additional $\frac{n}{10}$ ones in this place.
+\item As you can see, this cycle repeats itself and every new "place" (power of ten), you get an additional $\frac{n}{10}$. 
+\end{itemize}
+Now, this shows an easy solution--that once we hit like 11 digits in $n$, it should be obvious that $f(n) > n$. But, I wrote a short python script to prove this---and 11 zeroes is too much computational power. 
+
+\begin{lstlisting}[language=Python]
+	def countDigitOne(n):
+		countr = 0
+		for i in range(1, n + 1):
+			str1 = str(i)
+			countr += str1.count("1")
+
+		return countr
+
+	n = 10000000000
+	save = countDigitOne(n)
+	print(save, save >= n)
+\end{lstlisting}
+
+So, I claim that there is an easier way! Imagine you want to pick the "optimal" number so that this program reduces its computational time. I claim that this optimal number is $n = 2,000,000$. The reason why is that we need only to account for $\frac{n}{2}$ difference between "ones" and $n$. The reason why is because every number $1,000,000 - 1,999,999$ guarenteed has a one in the farthest digit. And since there are 6 non-leading digits, we have that the number of ones is actually $\frac{n}{2} + 6 \cdot \frac{n}{10}$.  \\
+\\
+Picking this number, we can thus show (via proof and via code) that there exists some $n$ such that $f(n) > n$.  

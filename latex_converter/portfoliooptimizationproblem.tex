@@ -1,0 +1,85 @@
+\section{A Problem on Optimizing Portfolios}
+\subsection{Problem}
+Imagine you have a list of expected returns for equities $\alpha_i$ and a list of variance/risks associated with thoes equities $r_i$. Now, imagine you have some risk constant $\lambda$, which we can assume is a constant for this problem. Your goal is to write a Python function to optimize the following utility function for balancing your portfolio.
+$$
+U(\omega_1, \omega_2, \dots, \omega_n) = \sum_{i=1}^n \alpha_i\omega_i - \frac{\lambda}{2} \sum_{i=1}^n r_i\omega_i^2
+$$
+\subsection{Solution}
+Remember that Lagrange is a process of solving a multi-variate problem where we want to optimize $f(x_1,x_2,\dots,x_n)$ with the following constraints $g(x_1, x_2, \dots, x_n)$. 
+\begin{align*}
+\nabla f(x_1,x_2, \dots, x_n) + \mu \nabla g(x_1,x_2,\dots,x_n) &= 0\\
+g(x_1, x_2, \dots, x_n) &= k
+\end{align*}
+We can define the functions $f$ and $g$ as follows in context of the problem.
+\begin{align*}
+  f(x_1, x_2, \dots, x_n) &= \sum_{i=1}^n \alpha_i\omega_i - \frac{\lambda}{2} \sum_{i=1}^n r_i\omega_i^2 \\
+  g(x_1,x_2,\dots, x_n) &= \sum_{i=1}^n \omega_i = 0
+\end{align*}
+In this problem, we can set up the following system of equations defined by the Lagrange relationship above for every $i \in \{1,2,\dots,n\}$. 
+$$
+\alpha_i - \lambda r_iw_i + \mu = 0
+$$
+Thus, we can describe this system of equations as the following matrix. Notice how the first $n$ rows of the matrix represent the relationship described above, and the last row of the matrix represents the constraint.
+$$
+\underbrace{\begin{bmatrix}
+\lambda r_1 & 0 & 0 & \cdots & \cdots & \cdots & 0 & 1\\
+0 & \lambda r_2 & 0 & \cdots & \cdots & \cdots & 0 & 1\\
+0 & 0 & \lambda r_3 & \cdots & \cdots & \cdots & 0 & 1\\
+0 & 0 & 0 & \cdots & \cdots & \cdots & 0 & 1 \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+0 & 0 & 0 & \cdots & \cdots & \cdots & \lambda r_n & 1 \\
+1 & 1 & 1 & \cdots & \cdots & \cdots & 1 & 0 
+\end{bmatrix}}_{\text{Matrix } A}
+\begin{bmatrix}
+	\omega_1 \\
+	\omega_2 \\
+	\omega_3 \\
+	\vdots \\
+	\vdots \\
+	\vdots \\
+	\omega_n \\
+	\mu
+\end{bmatrix} 
+=
+\underbrace{
+\begin{bmatrix}
+	\alpha_1 \\
+	\alpha_2 \\
+	\alpha_3 \\
+	\vdots \\
+	\vdots \\ 
+	\vdots \\
+	\alpha_n \\
+	0
+\end{bmatrix}}_{\text{Matrix }b}
+$$
+To solve this, we will use a numpy library that is meant for linalg. 
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+
+def maximize_function(alphas, rs, lam):
+  n = len(alphas)
+  
+  # construct Matrix A for all omegas
+  A = np.diag([lam * r for r in rs])  
+  
+  # add the row for the constraint (1 1 1 1 1 ... 1 0)
+  constraint_row = np.ones((1, n)) 
+  A = np.vstack([A, constraint_row]) 
+  
+  # add a column for the "mu" term and make sure n+1 row has a 0
+  last_column = np.ones((n, 1)) 
+  last_column = np.vstack([last_column, [[0]]])  
+  A = np.hstack([A, last_column])
+  
+  # now, your matrix A should work
+  
+  # construct matrix b, add the 0 for n+1 row
+  b = np.array(alphas + [0])
+  
+  # this will give you (omegas ... mu), but we only care about omegas
+  solution = np.linalg.solve(A, b)
+  return solution[:-1]
+\end{lstlisting}

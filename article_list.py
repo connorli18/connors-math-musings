@@ -124,6 +124,36 @@ math_article_list = {
         "author": "Connor Li",
         "title": "Problem on Fundamental Domains of a Modular Group",
         "publish-date": "2024-06-05"
+    },
+    "functionshighermath": {
+        "filename": "functionshighermath.txt",
+        "author": "Connor Li",
+        "title": "Functions in Higher Mathematics",
+        "publish-date": "2024-10-24"
+    },
+    "asimpleinductionproof": {
+        "filename": "asimpleinductionproof.txt",
+        "author": "Connor Li",
+        "title": "A Simple Induction Proof",
+        "publish-date": "2024-11-01"
+    },
+    "settheoryforhighermath": {
+        "filename": "settheoryforhighermath.txt",
+        "author": "Connor Li",
+        "title": "Set Theory for Higher Mathematics",
+        "publish-date": "2024-11-02"
+    },
+    "numberofonesproblem": {
+        "filename": "numberofonesproblem.txt",
+        "author": "Connor Li",
+        "title": "Number of Ones Problem",
+        "publish-date": "2024-11-03"
+    },
+    "portfoliooptimizationproblem": {
+        "filename": "portfoliooptimizationproblem.txt",
+        "author": "Connor Li",
+        "title": "A Portfolio Optimization Problem",
+        "publish-date": "2024-09-23"
     }
 }
 
