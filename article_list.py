@@ -211,5 +211,17 @@ cs_article_list = {
         "author": "Connor Li",
         "title": "Example of DFA for Regular Languages",
         "publish-date": "2023-11-23"
+    },
+    "martinilab": {
+        "filename": "martinilab.txt",
+        "author": "Connor Li, Nguyen Tran",
+        "title": "Martini Lab: A Fun Project",
+        "publish-date": "2024-11-18"
+    },
+    "columbiasommelier": {
+        "filename": "columbiasommelier.txt",
+        "author": "Connor Li",
+        "title": "Columbia Sommelier: A Wine Social Media",
+        "publish-date": "2024-09-20"
     }
 }
