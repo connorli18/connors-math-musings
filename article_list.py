@@ -223,5 +223,11 @@ cs_article_list = {
         "author": "Connor Li",
         "title": "Columbia Sommelier: A Wine Social Media",
         "publish-date": "2024-09-20"
+    },
+    "helpyourfriendsgetdates": {
+        "filename": "helpyourfriendsgetdates.txt",
+        "author": "Connor Li",
+        "title": "Help Your Friends Get Dates: A Silly Website",
+        "publish-date": "2024-10-21"
     }
 }
