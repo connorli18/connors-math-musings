@@ -154,6 +154,12 @@ math_article_list = {
         "author": "Connor Li",
         "title": "A Portfolio Optimization Problem",
         "publish-date": "2024-09-23"
+    },
+    "gradientdescentirl": {
+        "filename": "gradientdescentirl.txt",
+        "author": "Connor Li",
+        "title": "Gradient Descent",
+        "publish-date": "2024-12-01"
     }
 }
 

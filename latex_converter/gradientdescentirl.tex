@@ -1,0 +1,114 @@
+
+\section{Gradient Descent}
+\subsection{The Problem Statement}
+Imagine we have some function $f(x,y)$ and we want to demonstrate how to do gradient descent given some starting value $(a,b)$ and step size $\alpha$. The problem is fairly generic, but we will provide a more in-depth solution and example to showcase how this method works.
+\subsection{Finding the Gradient}
+First, let's find the gradient $\nabla f(x,y) = \langle f_x, f_y \rangle$.
+
+\subsection{Gradient Descent Script (Python)}
+For the next few iterations, I have used a Python script to do the iterative calculations. Below is the commented script that repeats the example iteration where we map $(a,b) \mapsto \left(a - \alpha f_x(a,b), b - \alpha f_y(a,b)\right)$ and round to the thousandth's place. \\
+\\
+First, we add our calculated gradient functions as $f_x, f_y$ respectively. 
+\begin{lstlisting}[language=Python]
+    import math
+    
+    # calculated f_x from gradient
+    def f_x(a: float, b: float) -> float:
+        # fill in with function!
+        pass
+    
+    # calculated f_y from gradient
+    def f_y(a: float, b: float) -> float:
+        # fill in with function!
+        pass
+
+\end{lstlisting}
+Then, we define a function that represents one iteration of the gradient descent using the problem from the example.
+\begin{lstlisting}[language=Python]
+    def grad_descent_one_step(starting_point: tuple, f_x, f_y, alpha: float):
+    
+        # starting_point (a,b)
+        a = starting_point[0]
+        b = starting_point[1]
+    
+        # calculates f_x(a,b) and f_y(a,b)
+        grad_x = f_x(a=a, b=b)
+        grad_y = f_y(a=a, b=b)
+    
+        # calculates the next "step" - rounded to 3 decimals
+        a_output = round(a - alpha * grad_x, 3)
+        b_output = round(b - alpha * grad_y, 3)
+    
+        # outputs the "next step"
+        return (a_output, b_output)
+\end{lstlisting}
+
+Since we are generally interested in two types of ``gradient descent,'' we define two functions. 
+\begin{itemize}
+    \item Set Iterations: We only run a set number of iterations!
+    \item Stabilizing: We keep iterating until there is less than a $3$-decimal difference between iterative results.
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+    # for a set number of iterations
+    def set_iterations_grad_descent(starting_point: tuple, f_x, f_y, alpha: float, num_iterations: int):
+    
+        start_a = starting_point[0]
+        start_b = starting_point[1]
+        print(f"Starting: {(start_a, start_b)}")
+    
+        # keep iterating num_iterations times
+        for i in range(num_iterations):
+            
+            new_a, new_b = grad_descent_one_step(starting_point, f_x, f_y, alpha)
+            print(f"Iteration {i+1}: {(new_a, new_b)}")
+    
+            # reset your starting!
+            start_a = new_a
+            start_b = new_b
+    
+        return (new_a, new_b)
+    
+    
+    # for no set number
+    def stabilizing_grad_descent(starting_point: tuple, f_x, f_y, alpha: float):
+    
+        start_a = starting_point[0]
+        start_b = starting_point[1]
+        print(f"Starting: {(start_a, start_b)}")
+    
+        count = 0
+    
+        # keep iterating until you hit the break condition!
+        while True:
+    
+            new_a, new_b = grad_descent_one_step((start_a, start_b), f_x, f_y, alpha)
+            count += 1
+    
+            print(f"Iteration {count}: {(new_a, new_b)}")
+            # three decimal precision
+            if abs(start_a - new_a) < 0.001 and abs(start_b - new_b) < 0.001:
+                break
+                return (count, (new_a, new_b))
+    
+            # reset the values to start the next cycle
+            else:
+                start_a = new_a
+                start_b = new_b
+\end{lstlisting} 
+
+
+Finally, we just print the results nicely so that we can apply this to specific problems regarding gradient descent. 
+
+\begin{lstlisting}[language=Python]
+    if __name__ == "__main__":
+        
+        # starting point
+        starting_point = (0, 0)
+    
+        # question 2
+        print("-----------------Problem Solution----------------")
+        alpha_start = 0
+        stabilizing_grad_descent(starting_point, f_x, f_y, alpha_start)
+
+\end{lstlisting}
