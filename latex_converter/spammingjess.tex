@@ -1,0 +1,61 @@
+\section{Spamming Jessica}
+\subsection{The Problem}
+So, my friend recently made a website to display her Mechnical engineering work. It's actually an amazing website, and the work she is doing is extraodinarily cool---if you are interested, please check if out \href{https://jessicabolar.com/}{here}. But, like any good friend over winter break (with way too much time on his hands), I wanted to take this opportunity to refresh my Selenium skills. \\
+\\
+For those of you that don't know, Selenium is a website to automate web browsing. It allows you to interact with websites and automate that interaction, which is really cool. And while it can be used for very useful things, I decided to use it for evil. \\
+\\
+``Some men can't be bought, can't be reasoned with. Some men just want to watch the world burn''\\
+\\
+Anyway, she made the rookie mistake of leaving an email form on her website, and I thought to myself ``perfect opportunity to spam her website non-stop''. So, I wrote a Python script to do just that. Please check it out!
+
+\begin{lstlisting}[language=Python]
+    # various imports....
+
+    def spam_jess(number_of_iterations=None):
+
+        chrome_options = Options()
+        chrome_options.add_argument("--start-maximized")  
+
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+
+        driver.get("https://www.jessicabolar.com/contact")
+        count = 0
+
+        try:
+
+            while True:
+                
+                if number_of_iterations is not None and count == number_of_iterations:
+                    break
+
+                count += 1
+
+                wait = WebDriverWait(driver, 10)
+                fname_field = wait.until(EC.presence_of_element_located((By.ID, "placeholder")))
+                lname_field = wait.until(EC.presence_of_element_located((By.ID, "placeholder")))
+                email_field = wait.until(EC.presence_of_element_located((By.ID, "placeholder")))
+                describe_business = wait.until(EC.presence_of_element_located((By.ID, "placeholder")))  
+                describe_project = wait.until(EC.presence_of_element_located((By.ID, "placeholder")))
+                submit_button = wait.until(EC.presence_of_element_located((By.XPATH, "//button[@type='submit']")))
+
+                fname_field.send_keys("A very nice first name")
+                lname_field.send_keys("A not inappropriate last name")
+                email_field.send_keys("getspammed@gmail.com")
+                describe_business.send_keys("LOL I figured out how to spam ur website")
+                describe_project.send_keys("I hope you and your family have pleasant evenings")
+                time.sleep(1)  
+
+                submit_button.click()
+                time.sleep(2)
+
+                driver.refresh()
+
+                time.sleep(2)
+
+        except KeyboardInterrupt:
+            print("Loop interrupted by user.")
+
+        finally:
+            driver.quit()
+
+\end{lstlisting}

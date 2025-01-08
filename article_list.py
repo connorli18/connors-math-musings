@@ -241,5 +241,17 @@ cs_article_list = {
         "author": "Connor Li",
         "title": "The LeBron Quiz: Pouring Honey on a Goat",
         "publish-date": "2025-01-02"
+    },
+    "brawlstats": {
+        "filename": "brawlstats.txt",
+        "author": "Connor Li",
+        "title": "Brawl Stars Statistics Generator",
+        "publish-date": "2024-12-15"
+    },
+    "spammingjess": {
+        "filename": "spammingjess.txt",
+        "author": "Connor Li",
+        "title": "Spamming Jess: Evil for Evil's Sake",
+        "publish-date": "2025-01-02"
     }
 }
