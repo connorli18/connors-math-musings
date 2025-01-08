@@ -235,5 +235,11 @@ cs_article_list = {
         "author": "Connor Li",
         "title": "Help Your Friends Get Dates: A Silly Website",
         "publish-date": "2024-10-21"
+    },
+    "thelebronquiz": {
+        "filename": "thelebronquiz.txt",
+        "author": "Connor Li",
+        "title": "The LeBron Quiz: Pouring Honey on a Goat",
+        "publish-date": "2025-01-02"
     }
 }
