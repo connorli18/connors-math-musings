@@ -159,7 +159,19 @@ math_article_list = {
         "filename": "gradientdescentirl.txt",
         "author": "Connor Li",
         "title": "Gradient Descent",
-        "publish-date": "2024-12-01"
+        "publish-date": "2024-12-04"
+    },
+    "gambling": {
+        "filename": "gambling.txt",
+        "author": "Connor Li",
+        "title": "Gambling: A Mathematical Perspective",
+        "publish-date": "2025-01-20"
+    },
+    "oddnumsprop": {
+        "filename": "oddnumsprop.txt",
+        "author": "Connor Li",
+        "title": "Properties of Odd Numbers",
+        "publish-date": "2025-01-21"
     }
 }
 

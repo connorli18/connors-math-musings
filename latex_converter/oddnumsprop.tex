@@ -1,0 +1,55 @@
+\section{Interesting Sum of Odd Numbers}
+\subsection{The Proposition}
+Consider the following theorem.\\
+\\
+\textbf{Proposition:} The sum of the first $n$ odd integers is a perfect square. Specifically, this sum of interest is $n^2$. 
+
+\subsection{Proof Method (1): Visual Proof}
+Consider the case where $n = 1$. Visually, we can describe this as a $1 \times 1$ square (represented by the matrix).
+$$
+\begin{pmatrix}
+    1
+\end{pmatrix}
+$$
+Now, consider the case where $n = 2$. Since the second odd number is $3$, we can represent this still in square form as follows (where the cells with $2$ represent the contribution from $n =2$).
+$$
+\begin{pmatrix}
+    1 & 2 \\
+    2 & 2
+\end{pmatrix}
+$$
+If we extend this to $n = 3$, we can represent this as follows.
+$$
+\begin{pmatrix}
+    1 & 2 & 3 \\
+    2 & 2 & 3 \\
+    3 & 3 & 3 
+\end{pmatrix}
+$$
+For the case with any $n \in \mathbb{Z}$, we can represent this (still) in square form.
+$$
+\begin{pmatrix}
+    1 & 2 & \cdots & n-1 & n \\
+    2 & 2 & \cdots & n-1 & n \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    n-1 & n-1 & \cdots & n-1  & n-1 \\
+    n & n & \cdots & n & n
+\end{pmatrix}
+$$
+\subsection{Proof Method (2): Induction}
+Consider the base case $n=1$. It should be fairly obvious that $1 = 1^2$.\\
+\\
+Now, assume the following inductive hypothesis.\\
+\\
+\textbf{Inductive Hypothesis:} The proposition holds for $n$ such that $n^2 = 1 + \cdots + (2n-1)$.\\
+\\
+Now, consider the case for $n +1$. 
+\begin{align*}
+1 + \cdots + (2n -1) + (2n + 1) &= n^2 + 2n + 1 \\
+&= (n+1)^2 
+\end{align*}
+\subsection{Proof Method (3): Gaussian Sum}
+We can use the Gaussian sum trick to show this directly.
+$$
+\frac{\left(1 + (2n-1)\right) * n}{2} = \frac{2n^2}{2} = n^2
+$$
